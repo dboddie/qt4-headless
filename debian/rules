@@ -1,0 +1,245 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export QTDIR := $(shell pwd)
+export PATH := $(QTDIR)/bin:$(PATH)
+# workaround to use lrelease.
+export LD_LIBRARY_PATH := $(QTDIR)/lib:$(LD_LIBRARY_PATH)
+# workaround to use qhelpgenerator.
+export QT_PLUGIN_PATH := $(QTDIR)/plugins
+
+pkgs_dbg := $(shell dh_listpackages | grep dbg | sed -e '/phonon-dbg/d; /libqt4-dbg/d; s|-dbg||')
+pkgs_lib := $(filter-out %-dev %-dbg,$(filter lib%,$(shell dh_listpackages)))
+# Upstream changelog
+upstream_changes := $(wildcard changes-*)
+# Current debian version (e.g.: 4:4.5.2-1)
+current_version := $(shell dpkg-parsechangelog | sed -n 's/^Version: //p')
+# Specific shlibs version (e.g.: 4:4.5.2)
+shlibs_version := $(shell dpkg-parsechangelog | sed -n 's/^Version: //p' | cut -f1 -d '-')
+
+extra_configure_opts += -no-sql-ibase
+
+DEB_HOST_ARCH := $(shell dpkg-architecture -qDEB_HOST_ARCH)
+DEB_HOST_ARCH_OS := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+
+ifeq ($(DEB_HOST_ARCH),arm)
+	extra_configure_opts += -DQT_QLOCALE_USES_FCVT
+endif
+ifeq ($(DEB_HOST_ARCH),armel)
+	extra_configure_opts += -arch armv6
+endif
+ifeq ($(DEB_HOST_ARCH),ia64)
+	CFLAGS = -g -Os
+	CXXFLAGS = -g -Os
+	export CFLAGS CXXFLAGS
+endif
+
+ifeq ($(DEB_HOST_ARCH_OS),linux)
+	platform_arg = linux-g++
+else
+	platform_arg = glibc-g++
+endif
+
+%:
+	dh --parallel --with pkgkde_symbolshelper --with quilt $@
+
+override_dh_auto_configure:
+	# Test broken hppa kernel with glibc >= 2.5
+ifeq ($(DEB_HOST_ARCH),hppa)
+	mkdir -p debian/hppa-tmp
+	echo "Testing whether getdents kernel bug is present on this buildd - see #433768"
+	gcc -o debian/hppa-tmp/hppa-test-program debian/readdir-hppa-test.c
+	cd $(CURDIR)/doc/html && $(CURDIR)/debian/hppa-tmp/hppa-test-program | sort > $(CURDIR)/debian/hppa-tmp/readdir_r-out
+	cd $(CURDIR)/doc/html && ls -a | sort > $(CURDIR)/debian/hppa-tmp/ls-a-out
+	@if ! diff -q $(CURDIR)/debian/hppa-tmp/readdir_r-out $(CURDIR)/debian/hppa-tmp/ls-a-out ; \
+		then \
+		echo "Kernel bug present. This will misbuild qt4 if proceeding. Failing" ; \
+		echo "Please update kernel and test again" ; \
+		exit 5 ; \
+	fi
+endif
+
+	# Create mkspecs/glibc-g++ from mkspecs/linux-g++, needed by GNU/kFreeBSD
+	# we cannot use directly linux-g++ due to src/corelib/io/io.pri
+	rm -rf mkspecs/glibc-g++
+	cp -a mkspecs/linux-g++ mkspecs/glibc-g++
+
+	# Generate include
+	rm -rf include && QTDIR="." perl bin/syncqt
+
+	./configure -prefix /usr/share/metno-diana \
+	            -prefix-install \
+	            -release \
+	            -opensource \
+	            -shared \
+	            -no-fast \
+	            -largefile \
+	            -exceptions \
+	            -no-accessibility \
+	            -stl \
+	            -no-qt3support \
+                -no-xmlpatterns \
+                -no-multimedia \
+                -no-audio-backend \
+                -no-phonon \
+                -no-phonon-backend \
+                -svg \
+                -no-webkit \
+                -no-javascript-jit \
+                -no-script \
+                -no-scripttools \
+                -system-zlib \
+                -system-libtiff \
+                -system-libpng \
+                -system-libmng \
+                -system-libjpeg \
+                -openssl \
+                -rpath \
+                -no-optimized-qmake \
+                -nis \
+                -no-cups \
+                -iconv \
+                -pch \
+                -no-separate-debug-info \
+                -embedded \
+                -system-freetype \
+                -no-opengl \
+                -depths 16,32 \
+                -no-gfx-linuxfb \
+                -no-gfx-multiscreen \
+                -glib \
+                -no-dbus \
+                -confirm-license \
+                -nomake demos \
+                -nomake docs \
+                -nomake examples \
+                -nomake tests \
+                -nomake tools \
+	            $(extra_configure_opts)
+
+override_dh_clean:
+	rm -rf po
+	dh_clean
+
+override_dh_builddeb:
+	dh_builddeb -- -Z lzma
+
+override_dh_auto_build:
+	dh_auto_build
+	# Build documentations
+	#$(MAKE) docs
+	# Build translations
+	#$(MAKE) ts
+	# Workaround: It's a known qmake limitation.
+	# It can't generate install rules for files that don't exist yet like docs.
+	./config.status
+
+override_dh_auto_clean:
+	[ ! -f Makefile ] || $(MAKE) confclean distclean
+
+	# Extra stuff missed by confclean/distclean
+
+	# Misc. files
+	rm -f \
+	  config.status \
+	  config.tests/.qmake.cache \
+	  examples/dbus/*/Makefile.* \
+	  mkspecs/qconfig.pri \
+	  src/corelib/global/qconfig.* \
+	;
+
+	# Misc. directories
+	rm -rf \
+	  doc-build/ \
+	  examples/tools/plugandpaint/plugins/ \
+	  examples/tools/styleplugin/styles/ \
+	  mkspecs/glibc-g++/ \
+	  plugins/ \
+	;
+
+	# hppa test directory
+	rm -rf debian/hppa-tmp
+
+	# Leftover dirs
+	find -depth -type d \( -false \
+	  -o -name debug-shared \
+	  -o -name debug-static \
+	  -o -name \*.gch \
+	  -o -name .moc\* \
+	  -o -name .obj\* \
+	  -o -name .pch \
+	  -o -name pkgconfig \
+	  -o -name .rcc \
+	  -o -name release-shared \
+	  -o -name release-static \
+	  -o -name .uic \
+	\) -print0 | xargs -0 rm -rf
+
+	# Leftover files and all symlinks
+	find \( -false \
+	  -o -type f -name \*.a \
+	  -o -name Makefile.Debug \
+	  -o -name Makefile.Release \
+	  -o -name \*.o \
+	  -o -name \*.prl \
+	  -o -name \*.so \
+	  -o -name \*.so.debug \
+	  -o -type l \
+	\) -delete
+
+	# Delete all Makefiles, excluding some from src/3rdparty
+	find $(CURDIR) -name Makefile \
+	  ! -path $(CURDIR)/src/3rdparty/Makefile \
+	  ! -path $(CURDIR)/src/3rdparty/freetype/\* \
+	  ! -path $(CURDIR)/src/3rdparty/zlib/\* \
+	-delete
+
+	# Any remaining executables
+	find $(CURDIR) -type f -print0 | xargs -0 file -i | grep \
+	  -e application/x-executable \
+	| cut -d ':' -f 1 | xargs rm -f
+
+	# Generated on build
+	rm -f debian/shlibs.local
+	rm -f debian/stamp-makefile-build-tools
+
+override_dh_auto_install:
+	$(MAKE) install INSTALL_ROOT=$(CURDIR)/debian/tmp/
+
+	# Fix wrong path in pkgconfig files
+	find $(CURDIR)/debian/tmp/usr/share/metno-diana/lib/pkgconfig -type f -name '*.pc' \
+		-exec perl -pi -e "s, -L$(CURDIR)/?\S+,,g" {} \;
+	# Fix wrong path in prl files
+	find $(CURDIR)/debian/tmp/usr/share/metno-diana/lib -type f -name '*.prl' \
+		-exec sed -i -e "/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/" {} \;
+
+	#added in Kubuntu for Qt Jambi
+	mkdir -p $(CURDIR)/debian/tmp/usr/share/metno-diana/share/qt4/lib
+	cd $(CURDIR)/debian/tmp/usr/share/metno-diana/lib/; for file in `ls *so* | grep -v debug`; do ln -s /usr/share/metno-diana/lib/$${file} ../share/qt4/lib/$${file}; done
+
+override_dh_install:
+	dh_install --list-missing --sourcedir=debian/tmp
+
+override_dh_installdocs:
+	dh_installdocs --all LGPL_EXCEPTION.txt
+
+override_dh_installchangelogs:
+	dh_installchangelogs $(upstream_changes)
+
+override_dh_strip:
+	$(foreach pkg,$(pkgs_dbg),dh_strip -p$(pkg) --dbg-package=$(pkg)-dbg-qws;)
+	dh_strip --remaining-packages --dbg-package=libqt4-dbg-qws
+
+override_dh_makeshlibs:
+	# Specific shlibs version (e.g.: 4:4.5.2)
+	$(foreach pkg,$(pkgs_lib),dh_makeshlibs -p$(pkg) -V '$(pkg) (>= $(shlibs_version))' -- -c0;)
+	# Generate shlibs local files
+	for pkg in $(pkgs_lib); do \
+		if test -e debian/$${pkg}/DEBIAN/shlibs ; then \
+			sed 's/>=[^)]*/= $(current_version)/' debian/$${pkg}/DEBIAN/shlibs >> debian/shlibs.local ;\
+		fi \
+	done
+
+.PHONY: override_dh_auto_test

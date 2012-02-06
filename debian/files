@@ -1,0 +1,7 @@
+libqtcore4-qws_4.6.2-metno0_i386.deb libs optional
+libqtgui4-qws_4.6.2-metno0_i386.deb libs optional
+libqt4-network-qws_4.6.2-metno0_i386.deb libs optional
+libqt4-svg-qws_4.6.2-metno0_i386.deb libs optional
+libqt4-dev-qws_4.6.2-metno0_i386.deb libdevel optional
+libqt4-dbg-qws_4.6.2-metno0_i386.deb debug extra
+qt4-qmake-qws_4.6.2-metno0_i386.deb devel optional

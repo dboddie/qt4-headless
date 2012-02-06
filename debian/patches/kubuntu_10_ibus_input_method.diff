@@ -1,0 +1,33 @@
+--- qt/src/gui/kernel/qapplication_x11.cpp	2010-01-15 17:01:35.000000000 +0000
++++ qt/src/gui/kernel/qapplication_x11.cpp	2010-02-02 23:05:12.000000000 +0000
+@@ -1026,7 +1026,7 @@
+         X11->default_im = QLatin1String("imsw-multi");
+     } else {
+         X11->default_im = settings.value(QLatin1String("DefaultInputMethod"),
+-                                         QLatin1String("xim")).toString();
++                                         QLatin1String("ibus")).toString();
+     }
+ 
+     settings.endGroup(); // Qt
+--- qt/src/plugins/inputmethods/imsw-multi/qmultiinputcontext.cpp	2010-01-15 17:01:35.000000000 +0000
++++ qt/src/plugins/inputmethods/imsw-multi/qmultiinputcontext.cpp	2010-02-02 23:04:38.000000000 +0000
+@@ -79,7 +79,7 @@
+     if (def.isEmpty()) {
+         QSettings settings(QSettings::UserScope, QLatin1String("Trolltech"));
+         settings.beginGroup(QLatin1String("Qt"));
+-        def = settings.value(QLatin1String("DefaultInputMethod"), QLatin1String("xim")).toString();
++        def = settings.value(QLatin1String("DefaultInputMethod"), QLatin1String("ibus")).toString();
+     }
+     current = keys.indexOf(def);
+     if (current < 0)
+--- qt/tools/qtconfig/mainwindow.cpp	2010-01-15 17:01:30.000000000 +0000
++++ qt/tools/qtconfig/mainwindow.cpp	2010-02-02 23:04:17.000000000 +0000
+@@ -357,7 +357,7 @@
+ #if defined(Q_WS_X11) && !defined(QT_NO_XIM)
+     QStringList inputMethods = QInputContextFactory::keys();
+     int inputMethodIndex = -1;
+-    QString defaultInputMethod = settings.value(QLatin1String("DefaultInputMethod"), QLatin1String("xim")).toString();
++    QString defaultInputMethod = settings.value(QLatin1String("DefaultInputMethod"), QLatin1String("ibus")).toString();
+     for (int i = inputMethods.size()-1; i >= 0; --i) {
+         const QString &im = inputMethods.at(i);
+         if (im.contains(QLatin1String("imsw"))) {

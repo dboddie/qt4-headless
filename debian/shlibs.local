@@ -1,0 +1,4 @@
+libQtCore 4 libqtcore4-qws (= 4:4.6.2-metno0)
+libQtGui 4 libqtgui4-qws (= 4:4.6.2-metno0)
+libQtNetwork 4 libqt4-network-qws (= 4:4.6.2-metno0)
+libQtSvg 4 libqt4-svg-qws (= 4:4.6.2-metno0)

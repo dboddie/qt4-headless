@@ -1,0 +1,98 @@
+Source: qt4-qws
+Section: libs
+Priority: optional
+Maintainer: David Boddie <david.boddie@met.no>
+XSBC-Original-Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Fathi Boudra <fabo@debian.org>, Ana Beatriz Guerrero Lopez <ana@debian.org>, Modestas Vainius <modax@debian.org>, Sune Vuorela <debian@pusling.com>,
+Build-Depends: debhelper (>= 7.4.13), quilt, pkg-kde-tools (>= 0.6.4), flex, sharutils,
+ libfreetype6-dev,
+ libjpeg62-dev, libmng-dev,
+ libmysqlclient-dev, libpng12-dev, libpq-dev,
+ libtiff4-dev,
+Standards-Version: 3.8.3
+Homepage: http://www.qt-project.org
+
+Package: libqtcore4-qws
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Qt 4 core module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ The QtCore module contains core non-GUI functionality.
+
+Package: libqtgui4-qws
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, fontconfig
+Description: Qt 4 GUI module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ The QtGui module extends QtCore with GUI functionality.
+
+Package: libqt4-network-qws
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Qt 4 network module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ The QtNetwork module offers classes that allow you to write TCP/IP clients and
+ servers. It provides classes to make network programming easier and portable.
+
+Package: libqt4-svg-qws
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Qt 4 SVG module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ The QtSvg module provides classes for displaying the contents of SVG files.
+ .
+ Scalable Vector Graphics (SVG) is a language for describing two-dimensional
+ graphics and graphical applications in XML.
+
+Package: libqt4-dev-qws
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqtcore4-qws (= ${binary:Version}),
+ libqt4-network-qws (= ${binary:Version}),
+ libqtgui4-qws (= ${binary:Version}), libqt4-svg-qws (= ${binary:Version}),
+ qt4-qmake-qws (= ${binary:Version})
+Description: Qt 4 development files
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the header development files and development programs
+ used for building Qt 4 applications.
+
+Package: libqt4-dbg-qws
+Priority: extra
+Architecture: any
+Section: debug
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ libqtcore4 (= ${binary:Version})
+Description: Qt 4 library debugging symbols
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains the debugging symbols for the Qt 4 libraries.
+
+Package: qt4-qmake-qws
+Architecture: any
+Section: devel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Qt 4 qmake Makefile generator tool
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ This package contains Qt 4 qmake (qmake-qt4), a tool that helps simplify
+ the build process for development project across different platforms.
+ qmake automates the generation of Makefiles so that only a few lines of
+ information are needed to create each Makefile. qmake can be used for any
+ software project, whether it is written using Qt or not.
+ .
+ Qt 4 qmake requires a platform and compiler description file which contains
+ many default values used to generate appropriate Makefiles.
+ .
+ This package contains also these platform specifications.

@@ -1,0 +1,2 @@
+shlibs:Depends=libc6 (>= 2.3.6-6~), libc6 (>= 2.11), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1), libglib2.0-0 (>= 2.12.0), libpng12-0 (>= 1.2.13-4), libqt4-network-qws (= 4:4.6.2-metno0), libqtcore4-qws (= 4:4.6.2-metno0), libstdc++6 (>= 4.1.1), zlib1g (>= 1:1.1.4)
+misc:Depends=

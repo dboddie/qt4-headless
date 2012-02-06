@@ -1,0 +1,12 @@
+temporary fix because of alpha, has to be dropped as soon as gcc's bug is fixed.
+
+--- a/src/opengl/opengl.pro
++++ b/src/opengl/opengl.pro
+@@ -35,6 +35,7 @@ SOURCES	+= qgl.cpp \
+            qglextensions.cpp \
+            qglpaintdevice.cpp \
+ 
++QMAKE_CXXFLAGS_HIDESYMS -= -fvisibility-inlines-hidden
+ 
+ !contains(QT_CONFIG, opengles2) {
+     HEADERS += qpaintengine_opengl_p.h

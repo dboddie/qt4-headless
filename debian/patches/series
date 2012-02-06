@@ -1,0 +1,55 @@
+#upstream patches
+0001_qpixmap_load_no_modify_referenced_copies.diff
+0002_qmake_qfileinfo_absolutepath.diff
+
+# qt-copy patches
+0180-window-role.diff
+0195-compositing-properties.diff
+0209-prevent-qt-mixing.diff
+0216-allow-isystem-for-headers.diff
+0225-invalidate-tabbar-geometry-on-refresh.patch
+
+# debian patches
+01_qmake_for_debian.diff
+02_launch_assistant-qt4.diff
+03_launch_moc-qt4.diff
+04_launch_uic-qt4.diff
+05_append_qt4_target.diff
+07_trust_dpkg-arch_over_uname-m.diff
+08_configure_quilt_compat.diff
+09_qmake_lflags_as-needed.diff
+10_config_tests_fixes.diff
+11_build_translations.diff
+12_add_nostrip_for_debug_packages.diff
+15_fix_qmake_makefile_generation.diff
+16_hide_std_symbols_on_qtwebkit.diff
+17_add_postgresql_8.3_support.diff
+18_enable_qt3support_qtwebkit_debug_info.diff
+20_install_qvfb.diff
+30_webkit_unaligned_access.diff
+40_alpha_ice.diff
+41_disable_opengl_visibility.diff
+50_kfreebsd_build_fix.diff
+51_kfreebsd_strnstr_build_fix.diff
+70_hppa_ldcw_fix.diff
+71_hppa_unaligned_access_fix_458133.diff
+80_hurd_max_path.diff
+81_hurd_architecture.diff
+82_hurd_SA_SIGINFO.diff
+89_powerpc_opts.diff
+91_s390_-gstabs.diff
+92_armel_gcc43_valist_compat.diff
+95_sparc_platform_definition.diff
+96_powerpc_no_gc_sections.diff
+
+# kubuntu patches
+kubuntu_04_qt_ia32_library_path.patch
+kubuntu_06_qdnd_x11_cursor.diff
+kubuntu_08_add_missing_bold_style.diff
+kubuntu_09_use_ft_glyph_embolden_to_fake_bold.diff
+kubuntu_10_ibus_input_method.diff
+kubuntu_12_fix_stack_protector.diff
+kubuntu_11_fix_behaviour_in_main_window_without_central_widget.diff
+kubuntu_13_qtwebkit_initialise_gtk.diff
+kubuntu_30_blacklist_ssl_certificates.diff
+kubuntu_31_blacklist_ssl_certificates_part2.diff

@@ -229,8 +229,8 @@ override_dh_installchangelogs:
 	dh_installchangelogs $(upstream_changes)
 
 override_dh_strip:
-	$(foreach pkg,$(pkgs_dbg),dh_strip -p$(pkg) --dbg-package=$(pkg)-dbg-qws;)
-	dh_strip --remaining-packages --dbg-package=libqt4-dbg-qws
+	$(foreach pkg,$(pkgs_dbg),dh_strip -p$(pkg) --dbg-package=$(pkg)-dbg;)
+	dh_strip --remaining-packages --dbg-package=libqt4-qws-dbg
 
 override_dh_makeshlibs:
 	# Specific shlibs version (e.g.: 4:4.5.2)

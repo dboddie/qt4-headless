@@ -52,7 +52,7 @@ Description: Qt 4 SVG module
  Scalable Vector Graphics (SVG) is a language for describing two-dimensional
  graphics and graphical applications in XML.
 
-Package: libqt4-dev-qws
+Package: libqt4-qws-dev
 Architecture: any
 Section: libdevel
 Depends: ${shlibs:Depends}, ${misc:Depends}, libqtcore4-qws (= ${binary:Version}),
@@ -66,12 +66,12 @@ Description: Qt 4 development files
  This package contains the header development files and development programs
  used for building Qt 4 applications.
 
-Package: libqt4-dbg-qws
+Package: libqt4-qws-dbg
 Priority: extra
 Architecture: any
 Section: debug
 Depends: ${shlibs:Depends}, ${misc:Depends},
- libqtcore4 (= ${binary:Version})
+ libqtcore4-qws (= ${binary:Version})
 Description: Qt 4 library debugging symbols
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.

@@ -52,12 +52,23 @@ Description: Qt 4 SVG module
  Scalable Vector Graphics (SVG) is a language for describing two-dimensional
  graphics and graphical applications in XML.
 
+Package: libqt4-xml-qws
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Qt 4 XML module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ The QtXml module provides a stream reader and writer for XML documents,
+ and C++ implementations of SAX and DOM.
+
 Package: libqt4-qws-dev
 Architecture: any
 Section: libdevel
 Depends: ${shlibs:Depends}, ${misc:Depends}, libqtcore4-qws (= ${binary:Version}),
  libqt4-network-qws (= ${binary:Version}),
  libqtgui4-qws (= ${binary:Version}), libqt4-svg-qws (= ${binary:Version}),
+ libqt4-xml-qws (= ${binary:Version}),
  qt4-qmake-qws (= ${binary:Version})
 Description: Qt 4 development files
  Qt is a cross-platform C++ application framework. Qt's primary feature

@@ -69,7 +69,7 @@ endif
 	# Generate include
 	rm -rf include && QTDIR="." perl bin/syncqt
 
-	./configure -prefix /usr/share/metno-diana \
+	./configure -prefix /usr/share/metno-bdiana \
 	            -prefix-install \
 	            -release \
 	            -opensource \
@@ -210,15 +210,15 @@ override_dh_auto_install:
 	$(MAKE) install INSTALL_ROOT=$(CURDIR)/debian/tmp/
 
 	# Fix wrong path in pkgconfig files
-	find $(CURDIR)/debian/tmp/usr/share/metno-diana/lib/pkgconfig -type f -name '*.pc' \
+	find $(CURDIR)/debian/tmp/usr/share/metno-bdiana/lib/pkgconfig -type f -name '*.pc' \
 		-exec perl -pi -e "s, -L$(CURDIR)/?\S+,,g" {} \;
 	# Fix wrong path in prl files
-	find $(CURDIR)/debian/tmp/usr/share/metno-diana/lib -type f -name '*.prl' \
+	find $(CURDIR)/debian/tmp/usr/share/metno-bdiana/lib -type f -name '*.prl' \
 		-exec sed -i -e "/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/" {} \;
 
 	#added in Kubuntu for Qt Jambi
-	mkdir -p $(CURDIR)/debian/tmp/usr/share/metno-diana/share/qt4/lib
-	cd $(CURDIR)/debian/tmp/usr/share/metno-diana/lib/; for file in `ls *so* | grep -v debug`; do ln -s /usr/share/metno-diana/lib/$${file} ../share/qt4/lib/$${file}; done
+	mkdir -p $(CURDIR)/debian/tmp/usr/share/metno-bdiana/share/qt4/lib
+	cd $(CURDIR)/debian/tmp/usr/share/metno-bdiana/lib/; for file in `ls *so* | grep -v debug`; do ln -s /usr/share/metno-bdiana/lib/$${file} ../share/qt4/lib/$${file}; done
 
 override_dh_install:
 	dh_install --list-missing --sourcedir=debian/tmp

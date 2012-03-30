@@ -5,10 +5,10 @@ set -e
 case "$1" in
     upgrade) ;;
     remove|failed-upgrade|deconfigure)
-        update-alternatives --remove moc "/usr/share/metno-diana/bin/moc-qt4"
-        update-alternatives --remove uic "/usr/share/metno-diana/bin/uic-qt4"
-        update-alternatives --remove lupdate "/usr/share/metno-diana/bin/lupdate-qt4"
-        update-alternatives --remove lrelease "/usr/share/metno-diana/bin/lrelease-qt4"
+        update-alternatives --remove moc "/usr/share/metno-bdiana/bin/moc-qt4"
+        update-alternatives --remove uic "/usr/share/metno-bdiana/bin/uic-qt4"
+        update-alternatives --remove lupdate "/usr/share/metno-bdiana/bin/lupdate-qt4"
+        update-alternatives --remove lrelease "/usr/share/metno-bdiana/bin/lrelease-qt4"
         ;;
 esac
 

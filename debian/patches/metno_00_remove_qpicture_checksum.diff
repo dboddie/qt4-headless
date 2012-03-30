@@ -1,0 +1,30 @@
+--- qt4-qws-4.6.2.orig/src/gui/image/qpaintengine_pic.cpp
++++ qt4-qws-4.6.2/src/gui/image/qpaintengine_pic.cpp
+@@ -143,7 +143,8 @@
+     d->s << (quint32) d->pic_d->trecs;                        // write number of records
+     d->pic_d->pictb.seek(cs_start);
+     QByteArray buf = d->pic_d->pictb.buffer();
+-    quint16 cs = (quint16) qChecksum(buf.constData() + data_start, pos - data_start);
++//    quint16 cs = (quint16) qChecksum(buf.constData() + data_start, pos - data_start);
++    quint16 cs = 0;
+     d->s << cs;                                // write checksum
+     d->pic_d->pictb.close();
+     setActive(false);
+--- qt4-qws-4.6.2.orig/src/gui/image/qpicture.cpp
++++ qt4-qws-4.6.2/src/gui/image/qpicture.cpp
+@@ -1106,13 +1106,13 @@
+     QByteArray buf = pictb.buffer();        // pointer to data
+ 
+     s >> cs;                                // read checksum
+-    ccs = (quint16) qChecksum(buf.constData() + data_start, buf.size() - data_start);
++/*  ccs = (quint16) qChecksum(buf.constData() + data_start, buf.size() - data_start);
+     if (ccs != cs) {
+         qWarning("QPicturePaintEngine::checkFormat: Invalid checksum %x, %x expected",
+                   ccs, cs);
+         pictb.close();
+         return false;
+-    }
++    }*/
+ 
+     quint16 major, minor;
+     s >> major >> minor;                        // read version number

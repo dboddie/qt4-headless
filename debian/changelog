@@ -1,3 +1,15 @@
+qt4-qws (4:4.6.2-metno2) lucid; urgency=low
+
+  * Updated the packaging to include patches in the patch series.
+
+ -- David Boddie <david.boddie@met.no>  Fri, 30 Mar 2012 14:54:00 +0200
+
+qt4-qws (4:4.6.2-metno1) lucid; urgency=low
+
+  * Removed checksum checking in QPicture and its paint engine.
+
+ -- David Boddie <david.boddie@met.no>  Fri, 30 Mar 2012 11:18:00 +0200
+
 qt4-qws (4:4.6.2-metno0) lucid; urgency=low
 
   * Created a package for embedded use.

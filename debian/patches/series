@@ -53,3 +53,6 @@ kubuntu_11_fix_behaviour_in_main_window_without_central_widget.diff
 kubuntu_13_qtwebkit_initialise_gtk.diff
 kubuntu_30_blacklist_ssl_certificates.diff
 kubuntu_31_blacklist_ssl_certificates_part2.diff
+
+#metno patches
+metno_00_remove_qpicture_checksum.diff

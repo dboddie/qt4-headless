@@ -1,3 +1,9 @@
+qt4-qws (4:4.8.1-metno0) precise; urgency=low
+
+  * Upgraded Qt to the version packaged in Ubuntu 12.04.
+
+ -- David Boddie <david.boddie@met.no>  Thu, 28 Jun 2012 17:05:00 +0200
+
 qt4-qws (4:4.6.2-metno2) lucid; urgency=low
 
   * Updated the packaging to include patches in the patch series.

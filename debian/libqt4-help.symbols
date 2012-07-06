@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 4:4.6.2 amd64
+# SymbolsHelper-Confirmed: 4:4.8.0 amd64 armel armhf i386 powerpc
 libQtHelp.so.4 libqt4-help #MINVER#
 * Build-Depends-Package: libqt4-dev
  _ZN11QHelpEngine11indexWidgetEv@Base 4:4.5.3
@@ -12,6 +12,7 @@ libQtHelp.so.4 libqt4-help #MINVER#
  _ZN11QHelpEngineD0Ev@Base 4:4.5.3
  _ZN11QHelpEngineD1Ev@Base 4:4.5.3
  _ZN11QHelpEngineD2Ev@Base 4:4.5.3
+ _ZN14QHelpGenerator10checkLinksERK18QHelpDataInterface@Base 4:4.7.0~beta1
  _ZN14QHelpGenerator11addProgressEd@Base 4:4.5.3
  _ZN14QHelpGenerator11insertFilesERK11QStringListRK7QStringS2_@Base 4:4.5.3
  _ZN14QHelpGenerator11qt_metacallEN11QMetaObject4CallEiPPv@Base 4:4.5.3
@@ -20,10 +21,12 @@ libQtHelp.so.4 libqt4-help #MINVER#
  _ZN14QHelpGenerator13setupProgressEP18QHelpDataInterface@Base 4:4.5.3
  _ZN14QHelpGenerator13statusChangedERK7QString@Base 4:4.5.3
  _ZN14QHelpGenerator14insertContentsERK10QByteArrayRK11QStringList@Base 4:4.5.3
- _ZN14QHelpGenerator14insertKeywordsE5QListI18QHelpDataIndexItemERK11QStringList@Base 4:4.5.3
+ _ZN14QHelpGenerator14insertKeywordsERK5QListI18QHelpDataIndexItemERK11QStringList@Base 4:4.7.0~beta1
  _ZN14QHelpGenerator14insertMetaDataERK4QMapI7QString8QVariantE@Base 4:4.5.3
  _ZN14QHelpGenerator15progressChangedEd@Base 4:4.5.3
  _ZN14QHelpGenerator16staticMetaObjectE@Base 4:4.5.3
+ _ZN14QHelpGenerator17FileNameTableDataD1Ev@Base 4:4.7.3
+ _ZN14QHelpGenerator17FileNameTableDataD2Ev@Base 4:4.7.3
  _ZN14QHelpGenerator20registerCustomFilterERK7QStringRK11QStringListb@Base 4:4.5.3
  _ZN14QHelpGenerator21registerVirtualFolderERK7QStringS2_@Base 4:4.5.3
  _ZN14QHelpGenerator22insertFileNotFoundFileEv@Base 4:4.5.3
@@ -37,8 +40,8 @@ libQtHelp.so.4 libqt4-help #MINVER#
  _ZN14QHelpGeneratorD0Ev@Base 4:4.5.3
  _ZN14QHelpGeneratorD1Ev@Base 4:4.5.3
  _ZN14QHelpGeneratorD2Ev@Base 4:4.5.3
- (optional=external|arch=armel hppa sparc)_ZN15QBasicAtomicInt3refEv@Base 4:4.5.3
- (optional=external|arch=armel hppa sparc)_ZN15QBasicAtomicInt5derefEv@Base 4:4.5.3
+ (optional=external|arch=hppa sparc)_ZN15QBasicAtomicInt3refEv@Base 4:4.5.3
+ (optional=external|arch=sparc)_ZN15QBasicAtomicInt5derefEv@Base 4:4.5.3
  _ZN15QHelpEngineCore11qt_metacallEN11QMetaObject4CallEiPPv@Base 4:4.5.3
  _ZN15QHelpEngineCore11qt_metacastEPKc@Base 4:4.5.3
  _ZN15QHelpEngineCore12setupStartedEv@Base 4:4.5.3
@@ -97,12 +100,20 @@ libQtHelp.so.4 libqt4-help #MINVER#
  _ZN16QHelpIndexWidget8showLinkERK11QModelIndex@Base 4:4.5.3
  _ZN16QHelpIndexWidgetC1Ev@Base 4:4.5.3
  _ZN16QHelpIndexWidgetC2Ev@Base 4:4.5.3
+ _ZN16QHelpIndexWidgetD0Ev@Base 4:4.7.3
+ _ZN16QHelpIndexWidgetD1Ev@Base 4:4.7.3
+ _ZN16QHelpIndexWidgetD2Ev@Base 4:4.7.3
  _ZN16QHelpProjectData8readDataERK7QString@Base 4:4.5.3
  _ZN16QHelpProjectDataC1Ev@Base 4:4.5.3
  _ZN16QHelpProjectDataC2Ev@Base 4:4.5.3
  _ZN16QHelpProjectDataD0Ev@Base 4:4.5.3
  _ZN16QHelpProjectDataD1Ev@Base 4:4.5.3
  _ZN16QHelpProjectDataD2Ev@Base 4:4.5.3
+ (arch=powerpc)_ZN16QHelpSearchQueryD1Ev@Base 4:4.8.0
+ (arch=powerpc)_ZN16QHelpSearchQueryD2Ev@Base 4:4.8.0
+ _ZN16QStringListModelD0Ev@Base 4:4.7.3
+ _ZN16QStringListModelD1Ev@Base 4:4.7.3
+ _ZN16QStringListModelD2Ev@Base 4:4.7.3
  _ZN17QHelpContentModel11qt_metacallEN11QMetaObject4CallEiPPv@Base 4:4.5.3
  _ZN17QHelpContentModel11qt_metacastEPKc@Base 4:4.5.3
  _ZN17QHelpContentModel14createContentsERK7QString@Base 4:4.5.3
@@ -144,10 +155,19 @@ libQtHelp.so.4 libqt4-help #MINVER#
  _ZN18QHelpContentWidget8showLinkERK11QModelIndex@Base 4:4.5.3
  _ZN18QHelpContentWidgetC1Ev@Base 4:4.5.3
  _ZN18QHelpContentWidgetC2Ev@Base 4:4.5.3
+ _ZN18QHelpContentWidgetD0Ev@Base 4:4.7.3
+ _ZN18QHelpContentWidgetD1Ev@Base 4:4.7.3
+ _ZN18QHelpContentWidgetD2Ev@Base 4:4.7.3
+ _ZN18QHelpDataIndexItemD1Ev@Base 4:4.7.3
+ _ZN18QHelpDataIndexItemD2Ev@Base 4:4.7.3
  _ZN20QHelpDataContentItemC1EPS_RK7QStringS3_@Base 4:4.5.3
  _ZN20QHelpDataContentItemC2EPS_RK7QStringS3_@Base 4:4.5.3
  _ZN20QHelpDataContentItemD1Ev@Base 4:4.5.3
  _ZN20QHelpDataContentItemD2Ev@Base 4:4.5.3
+ _ZN20QXmlStreamAttributesD1Ev@Base 4:4.7.3
+ _ZN20QXmlStreamAttributesD2Ev@Base 4:4.7.3
+ _ZN21QHelpDataCustomFilterD1Ev@Base 4:4.7.3
+ _ZN21QHelpDataCustomFilterD2Ev@Base 4:4.7.3
  _ZN22QHelpDataFilterSection10addContentEP20QHelpDataContentItem@Base 4:4.5.3
  _ZN22QHelpDataFilterSection10setIndicesERK5QListI18QHelpDataIndexItemE@Base 4:4.5.3
  _ZN22QHelpDataFilterSection11setContentsERK5QListIP20QHelpDataContentItemE@Base 4:4.5.3
@@ -162,7 +182,10 @@ libQtHelp.so.4 libqt4-help #MINVER#
  _ZN22QHelpSearchQueryWidget11qt_metacastEPKc@Base 4:4.5.3
  _ZN22QHelpSearchQueryWidget12focusInEventEP11QFocusEvent@Base 4:4.5.3
  _ZN22QHelpSearchQueryWidget16staticMetaObjectE@Base 4:4.5.3
+ _ZN22QHelpSearchQueryWidget20expandExtendedSearchEv@Base 4:4.8.0
+ _ZN22QHelpSearchQueryWidget22collapseExtendedSearchEv@Base 4:4.8.0
  _ZN22QHelpSearchQueryWidget6searchEv@Base 4:4.5.3
+ _ZN22QHelpSearchQueryWidget8setQueryERK5QListI16QHelpSearchQueryE@Base 4:4.8.0
  _ZN22QHelpSearchQueryWidgetC1EP7QWidget@Base 4:4.5.3
  _ZN22QHelpSearchQueryWidgetC2EP7QWidget@Base 4:4.5.3
  _ZN22QHelpSearchQueryWidgetD0Ev@Base 4:4.5.3
@@ -277,5 +300,7 @@ libQtHelp.so.4 libqt4-help #MINVER#
  _ZTV18QHelpDataInterface@Base 4:4.5.3
  _ZTV22QHelpSearchQueryWidget@Base 4:4.5.3
  _ZTV23QHelpSearchResultWidget@Base 4:4.5.3
+ (c++)"non-virtual thunk to QHelpContentWidget::~QHelpContentWidget()@Base" 4:4.7.3
+ (c++)"non-virtual thunk to QHelpIndexWidget::~QHelpIndexWidget()@Base" 4:4.7.3
  (c++)"non-virtual thunk to QHelpSearchQueryWidget::~QHelpSearchQueryWidget()@Base" 4:4.5.3
  (c++)"non-virtual thunk to QHelpSearchResultWidget::~QHelpSearchResultWidget()@Base" 4:4.5.3

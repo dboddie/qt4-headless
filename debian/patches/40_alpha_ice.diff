@@ -4,9 +4,14 @@ Description: Workaround for -fvisibility-inlines-hidden on alpha:
 Bug-Debian: http://bugs.debian.org/368883
 Author: Steve Langasek <vorlon@debian.org>
 
+---
+ src/corelib/global/qlibraryinfo.cpp |   14 ++++++++------
+ src/corelib/tools/qhash.h           |    2 +-
+ 2 files changed, 9 insertions(+), 7 deletions(-)
+
 --- a/src/corelib/global/qlibraryinfo.cpp
 +++ b/src/corelib/global/qlibraryinfo.cpp
-@@ -83,12 +83,7 @@ class QLibraryInfoPrivate
+@@ -85,12 +85,7 @@ class QLibraryInfoPrivate
  {
  public:
      static QSettings *findConfiguration();
@@ -20,7 +25,7 @@ Author: Steve Langasek <vorlon@debian.org>
      static QSettings *configuration()
      {
          QLibrarySettings *ls = qt_library_settings();
-@@ -96,6 +91,13 @@ public:
+@@ -98,6 +93,13 @@ public:
      }
  };
  
@@ -36,7 +41,7 @@ Author: Steve Langasek <vorlon@debian.org>
  {
 --- a/src/corelib/tools/qhash.h
 +++ b/src/corelib/tools/qhash.h
-@@ -520,7 +520,7 @@ Q_INLINE_TEMPLATE void QHash<Key, T>::de
+@@ -523,7 +523,7 @@ Q_INLINE_TEMPLATE void QHash<Key, T>::de
  }
  
  template <class Key, class T>

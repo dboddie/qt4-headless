@@ -3,47 +3,91 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
 export QTDIR := $(shell pwd)
 export PATH := $(QTDIR)/bin:$(PATH)
+export CFLAGS := $(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
+export CXXFLAGS := $(shell dpkg-buildflags --get CXXFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
+export LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 # workaround to use lrelease.
 export LD_LIBRARY_PATH := $(QTDIR)/lib:$(LD_LIBRARY_PATH)
 # workaround to use qhelpgenerator.
 export QT_PLUGIN_PATH := $(QTDIR)/plugins
 
-pkgs_dbg := $(shell dh_listpackages | grep dbg | sed -e '/phonon-dbg/d; /libqt4-dbg/d; s|-dbg||')
-pkgs_lib := $(filter-out %-dev %-dbg,$(filter lib%,$(shell dh_listpackages)))
+pkgs_dbg := $(shell dh_listpackages | grep dbg | sed -e '/libqt4-dbg/d; s|-dbg||')
+# Library package list for override_dh_makeshlibs, excludes libqt4-phonon
+pkgs_lib := $(filter-out %-dev %-dbg libqt4-phonon,$(filter lib%,$(shell dh_listpackages)))
 # Upstream changelog
 upstream_changes := $(wildcard changes-*)
 # Current debian version (e.g.: 4:4.5.2-1)
 current_version := $(shell dpkg-parsechangelog | sed -n 's/^Version: //p')
 # Specific shlibs version (e.g.: 4:4.5.2)
 shlibs_version := $(shell dpkg-parsechangelog | sed -n 's/^Version: //p' | cut -f1 -d '-')
+# libqt4-phonon shlibs. Minimum libphonon4 version may need adjusting for new
+# Qt upstream release
+libqt4phonon_shlibs := libphonon4 (>= 4:4.6.0) | libqt4-phonon (= $(current_version))
+# Distribution vendor
+vendor := $(shell dpkg-vendor --query Vendor)
 
-extra_configure_opts += -no-sql-ibase
+ifneq (,$(filter %-sql-ibase,$(shell dh_listpackages)))
+	extra_configure_opts += -plugin-sql-ibase
+else
+	extra_configure_opts += -no-sql-ibase
+endif
 
-DEB_HOST_ARCH := $(shell dpkg-architecture -qDEB_HOST_ARCH)
-DEB_HOST_ARCH_OS := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+ifneq (,$(filter %-sql-sqlite2,$(shell dh_listpackages)))
+	extra_configure_opts += -plugin-sql-sqlite2
+else
+	extra_configure_opts += -no-sql-sqlite2
+endif
 
 ifeq ($(DEB_HOST_ARCH),arm)
 	extra_configure_opts += -DQT_QLOCALE_USES_FCVT
 endif
-ifeq ($(DEB_HOST_ARCH),armel)
+
+armv6_architectures := armhf
+ifeq ($(vendor),Ubuntu)
+	armv6_architectures += armel
+endif
+ifeq ($(DEB_HOST_ARCH),$(findstring $(DEB_HOST_ARCH), $(armv6_architectures)))
 	extra_configure_opts += -arch armv6
 endif
-ifeq ($(DEB_HOST_ARCH),ia64)
-	CFLAGS = -g -Os
-	CXXFLAGS = -g -Os
-	export CFLAGS CXXFLAGS
+
+ifeq ($(vendor),Ubuntu)
+gles2_architectures := armel armhf
+else
+gles2_architectures := none_for_now
 endif
+#ifeq ($(DEB_HOST_ARCH),$(findstring $(DEB_HOST_ARCH), $(gles2_architectures)))
+#	extra_configure_opts += -opengl es2
+#else
+#	extra_configure_opts += -opengl desktop \
+#	                        -no-egl
+#endif
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
+  ifneq (,$(filter $(DEB_HOST_ARCH),alpha ia64))
 	platform_arg = linux-g++
+  else ifeq ($(DEB_HOST_ARCH_BITS),64)
+	platform_arg = linux-g++-64
+  else
+	platform_arg = linux-g++
+  endif
 else
+  ifeq ($(DEB_HOST_ARCH_OS),hurd)
+	platform_arg = hurd-g++
+  else
 	platform_arg = glibc-g++
+  endif
+endif
+
+ifneq ($(DEB_HOST_ARCH),ia64)
+	extra_dh_opts += --parallel
 endif
 
 %:
-	dh --parallel --with pkgkde_symbolshelper --with quilt $@
+	dh $@ $(extra_dh_opts) --with pkgkde_symbolshelper,lzma
 
 override_dh_auto_configure:
 	# Test broken hppa kernel with glibc >= 2.5
@@ -51,8 +95,8 @@ ifeq ($(DEB_HOST_ARCH),hppa)
 	mkdir -p debian/hppa-tmp
 	echo "Testing whether getdents kernel bug is present on this buildd - see #433768"
 	gcc -o debian/hppa-tmp/hppa-test-program debian/readdir-hppa-test.c
-	cd $(CURDIR)/doc/html && $(CURDIR)/debian/hppa-tmp/hppa-test-program | sort > $(CURDIR)/debian/hppa-tmp/readdir_r-out
-	cd $(CURDIR)/doc/html && ls -a | sort > $(CURDIR)/debian/hppa-tmp/ls-a-out
+	cd $(CURDIR)/doc/src/images && $(CURDIR)/debian/hppa-tmp/hppa-test-program | sort > $(CURDIR)/debian/hppa-tmp/readdir_r-out
+	cd $(CURDIR)/doc/src/images && ls -a | sort > $(CURDIR)/debian/hppa-tmp/ls-a-out
 	@if ! diff -q $(CURDIR)/debian/hppa-tmp/readdir_r-out $(CURDIR)/debian/hppa-tmp/ls-a-out ; \
 		then \
 		echo "Kernel bug present. This will misbuild qt4 if proceeding. Failing" ; \
@@ -66,76 +110,70 @@ endif
 	rm -rf mkspecs/glibc-g++
 	cp -a mkspecs/linux-g++ mkspecs/glibc-g++
 
-	# Generate include
-	rm -rf include && QTDIR="." perl bin/syncqt
+	# Remove include directory. Then ./configure will take care of calling
+	# syncqt and regenerating it.
+	rm -rf include
 
-	./configure -prefix /usr/share/metno-bdiana \
-	            -prefix-install \
-	            -release \
-	            -opensource \
-	            -shared \
-	            -no-fast \
-	            -largefile \
+	./configure -confirm-license \
+	            -depths 16,32 \
+	            -embedded \
 	            -exceptions \
+	            -fast \
+	            -glib \
+	            -iconv \
+	            -largefile \
+	            -nis \
 	            -no-accessibility \
-	            -stl \
+	            -no-audio-backend \
+	            -no-cups \
+	            -no-dbus \
+	            -no-declarative \
+	            -no-declarative-debug \
+	            -no-gfx-linuxfb \
+	            -no-gfx-multiscreen \
+	            -no-javascript-jit \
+	            -nomake demos \
+	            -nomake docs \
+	            -nomake examples \
+	            -nomake tests \
+	            -nomake tools \
+	            -no-multimedia \
+	            -no-opengl \
+	            -no-phonon \
+	            -no-phonon-backend \
 	            -no-qt3support \
-                -no-xmlpatterns \
-                -no-multimedia \
-                -no-audio-backend \
-                -no-phonon \
-                -no-phonon-backend \
-                -svg \
-                -no-webkit \
-                -no-xmlpatterns \
-                -no-javascript-jit \
-                -no-script \
-                -no-scripttools \
-                -system-zlib \
-                -system-libtiff \
-                -system-libpng \
-                -system-libmng \
-                -system-libjpeg \
-                -openssl \
-                -rpath \
-                -no-optimized-qmake \
-                -nis \
-                -no-cups \
-                -iconv \
-                -pch \
-                -no-separate-debug-info \
-                -embedded \
-                -system-freetype \
-                -no-opengl \
-                -depths 16,32 \
-                -no-gfx-linuxfb \
-                -no-gfx-multiscreen \
-                -glib \
-                -no-dbus \
-                -confirm-license \
-                -nomake demos \
-                -nomake docs \
-                -nomake examples \
-                -nomake tests \
-                -nomake tools \
+	            -no-script \
+	            -no-scripttools \
+	            -no-separate-debug-info \
+	            -no-sql-ibase \
+	            -no-sql-sqlite2 \
+	            -no-webkit \
+	            -no-xmlpatterns \
+	            -opensource \
+	            -openssl \
+	            -optimized-qmake \
+	            -pch \
+	            -prefix-install \
+	            -prefix /usr/share/metno-bdiana \
+	            -release \
+	            -rpath \
+	            -shared \
+	            -stl \
+	            -svg \
+	            -system-freetype \
+	            -system-libjpeg \
+	            -system-libpng \
+	            -system-libtiff \
+	            -system-zlib \
 	            $(extra_configure_opts)
 
-override_dh_clean:
-	rm -rf po
-	dh_clean
-
-override_dh_builddeb:
-	dh_builddeb -- -Z lzma
+	# Kubuntu addition: set the version of QtWebkit but don't add it to QT_CONFIG
+	#sed 's/^\s*QT_CONFIG.*//' src/3rdparty/webkit/Source/WebKit/qt/qt_webkit_version.pri > mkspecs/modules/qt_webkit_version.pri
 
 override_dh_auto_build:
 	dh_auto_build
-	# Build documentations
-	#$(MAKE) docs
 	# Build translations
-	#$(MAKE) ts
-	# Workaround: It's a known qmake limitation.
-	# It can't generate install rules for files that don't exist yet like docs.
-	./config.status
+	#dh_auto_build -Smakefile -- -C translations ts-all
 
 override_dh_auto_clean:
 	[ ! -f Makefile ] || $(MAKE) confclean distclean
@@ -154,8 +192,11 @@ override_dh_auto_clean:
 	# Misc. directories
 	rm -rf \
 	  doc-build/ \
+	  doc/html/ \
+	  doc/qch/ \
 	  examples/tools/plugandpaint/plugins/ \
 	  examples/tools/styleplugin/styles/ \
+	  include/ \
 	  mkspecs/glibc-g++/ \
 	  plugins/ \
 	;
@@ -180,7 +221,7 @@ override_dh_auto_clean:
 
 	# Leftover files and all symlinks
 	find \( -false \
-	  -o -type f -name \*.a \
+	  -o -name \*.a \
 	  -o -name Makefile.Debug \
 	  -o -name Makefile.Release \
 	  -o -name \*.o \
@@ -188,26 +229,55 @@ override_dh_auto_clean:
 	  -o -name \*.so \
 	  -o -name \*.so.debug \
 	  -o -type l \
-	\) -delete
+	\) -print0 | xargs -0 rm -rf
 
 	# Delete all Makefiles, excluding some from src/3rdparty
 	find $(CURDIR) -name Makefile \
 	  ! -path $(CURDIR)/src/3rdparty/Makefile \
 	  ! -path $(CURDIR)/src/3rdparty/freetype/\* \
 	  ! -path $(CURDIR)/src/3rdparty/zlib/\* \
-	-delete
+	  ! -path $(CURDIR)/src/3rdparty/ptmalloc/Makefile \
+	-print0 | xargs -0 rm -rf
 
 	# Any remaining executables
-	find $(CURDIR) -type f -print0 | xargs -0 file -i | grep \
-	  -e application/x-executable \
+	find $(CURDIR) -type f -perm /u+x,g+x,o+x -exec file -i '{}' \; \
+	| grep -e application/x-executable \
 	| cut -d ':' -f 1 | xargs rm -f
 
 	# Generated on build
 	rm -f debian/shlibs.local
 	rm -f debian/stamp-makefile-build-tools
 
+ifeq ($(vendor),Ubuntu)
+	rm -rf po
+endif
+
 override_dh_auto_install:
-	$(MAKE) install INSTALL_ROOT=$(CURDIR)/debian/tmp/
+ifneq (,$(filter qt4-doc, $(shell dh_listpackages)))
+	# Build documentations
+	dh_auto_build -Smakefile -- docs
+endif
+
+	# Workaround: It's a known qmake limitation.
+	# It can't generate install rules for files that don't exist yet like docs.
+	./config.status
+
+	# Kubuntu addition: set the version of QtWebkit but don't add it to QT_CONFIG
+	#sed 's/^\s*QT_CONFIG.*//' src/3rdparty/webkit/Source/WebKit/qt/qt_webkit_version.pri > mkspecs/modules/qt_webkit_version.pri
+
+	dh_auto_install -Smakefile -- INSTALL_ROOT=$(CURDIR)/debian/tmp/
+
+	# Ship private headers - ugly hack to build Qt Creator QML Designer
+#	cd $(CURDIR)/include && rsync -aR QtCore/private \
+#	                                  QtDeclarative/private \
+#	                                  QtGui/private \
+#	                                  QtScript/private \
+#	                                  ../debian/tmp/usr/include/qt4/
+#	cd $(CURDIR) && rsync -aR src/corelib/*/*_p.h \
+#	                          src/declarative/*/*_p.h \
+#	                          src/gui/*/*_p.h \
+#	                          src/script/*/*_p.h \
+#	                          debian/tmp/usr/include/
 
 	# Fix wrong path in pkgconfig files
 	find $(CURDIR)/debian/tmp/usr/share/metno-bdiana/lib/pkgconfig -type f -name '*.pc' \
@@ -216,12 +286,8 @@ override_dh_auto_install:
 	find $(CURDIR)/debian/tmp/usr/share/metno-bdiana/lib -type f -name '*.prl' \
 		-exec sed -i -e "/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/" {} \;
 
-	#added in Kubuntu for Qt Jambi
-	mkdir -p $(CURDIR)/debian/tmp/usr/share/metno-bdiana/share/qt4/lib
-	cd $(CURDIR)/debian/tmp/usr/share/metno-bdiana/lib/; for file in `ls *so* | grep -v debug`; do ln -s /usr/share/metno-bdiana/lib/$${file} ../share/qt4/lib/$${file}; done
-
 override_dh_install:
-	dh_install --list-missing --sourcedir=debian/tmp
+	dh_install --list-missing
 
 override_dh_installdocs:
 	dh_installdocs --all LGPL_EXCEPTION.txt
@@ -231,11 +297,16 @@ override_dh_installchangelogs:
 
 override_dh_strip:
 	$(foreach pkg,$(pkgs_dbg),dh_strip -p$(pkg) --dbg-package=$(pkg)-dbg;)
+	dh_strip -plibqt4-phonon
 	dh_strip --remaining-packages --dbg-package=libqt4-qws-dbg
+	# Move binaries in qt4-bin-dbg package
+	#mkdir -p debian/qt4-bin-dbg/usr/lib/debug/usr
+	#mv debian/libqt4-dbg/usr/lib/debug/usr/bin debian/qt4-bin-dbg/usr/lib/debug/usr/
 
 override_dh_makeshlibs:
 	# Specific shlibs version (e.g.: 4:4.5.2)
 	$(foreach pkg,$(pkgs_lib),dh_makeshlibs -p$(pkg) -V '$(pkg) (>= $(shlibs_version))' -- -c0;)
+	dh_makeshlibs -plibqt4-phonon -V'$(libqt4phonon_shlibs)'
 	# Generate shlibs local files
 	for pkg in $(pkgs_lib); do \
 		if test -e debian/$${pkg}/DEBIAN/shlibs ; then \

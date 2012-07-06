@@ -1,9 +1,13 @@
 Description: build qvfb tool
 Author: Fathi Boudra <fabo@debian.org>
 
+---
+ tools/tools.pro |    2 ++
+ 1 file changed, 2 insertions(+)
+
 --- a/tools/tools.pro
 +++ b/tools/tools.pro
-@@ -33,5 +33,7 @@ embedded: SUBDIRS += makeqpf
+@@ -44,6 +44,8 @@ embedded: SUBDIRS += makeqpf
  
  !wince*:!cross_compile:SUBDIRS += qdoc3
  
@@ -11,3 +15,4 @@ Author: Fathi Boudra <fabo@debian.org>
 +
  CONFIG+=ordered
  QTDIR_build:REQUIRES = "contains(QT_CONFIG, full-config)"
+ 

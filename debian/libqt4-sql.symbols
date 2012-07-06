@@ -1,7 +1,6 @@
-# SymbolsHelper-Confirmed: 4:4.6.1 amd64 i386
+# SymbolsHelper-Confirmed: 4:4.8.0 amd64
 libQtSql.so.4 libqt4-sql #MINVER#
 * Build-Depends-Package: libqt4-dev
-#MISSING: 4:4.6.1# _ZN10QByteArray4dataEv@Base 4:4.5.3
  _ZN10QSqlDriver11qt_metacallEN11QMetaObject4CallEiPPv@Base 4:4.5.3
  _ZN10QSqlDriver11qt_metacastEPKc@Base 4:4.5.3
  _ZN10QSqlDriver12notificationERK7QString@Base 4:4.5.3
@@ -103,6 +102,8 @@ libQtSql.so.4 libqt4-sql #MINVER#
  _ZN12QSqlDatabaseD1Ev@Base 4:4.5.3
  _ZN12QSqlDatabaseD2Ev@Base 4:4.5.3
  _ZN12QSqlDatabaseaSERKS_@Base 4:4.5.3
+ _ZN12QSqlRelationD1Ev@Base 4:4.7.3
+ _ZN12QSqlRelationD2Ev@Base 4:4.7.3
  _ZN14QSqlQueryModel11qt_metacallEN11QMetaObject4CallEiPPv@Base 4:4.5.3
  _ZN14QSqlQueryModel11qt_metacastEPKc@Base 4:4.5.3
  _ZN14QSqlQueryModel11queryChangeEv@Base 4:4.5.3
@@ -159,8 +160,8 @@ libQtSql.so.4 libqt4-sql #MINVER#
  _ZN14QSqlTableModelD0Ev@Base 4:4.5.3
  _ZN14QSqlTableModelD1Ev@Base 4:4.5.3
  _ZN14QSqlTableModelD2Ev@Base 4:4.5.3
- (optional=external|arch=armel hppa sparc)_ZN15QBasicAtomicInt3refEv@Base 4:4.5.3
- (optional=external|arch=armel hppa sparc)_ZN15QBasicAtomicInt5derefEv@Base 4:4.5.3
+ (optional=external|arch=sparc)_ZN15QBasicAtomicInt3refEv@Base 4:4.5.3
+ (optional=external|arch=sparc)_ZN15QBasicAtomicInt5derefEv@Base 4:4.5.3
  _ZN16QSqlCachedResult10fetchFirstEv@Base 4:4.5.3
  _ZN16QSqlCachedResult11clearValuesEv@Base 4:4.5.3
  _ZN16QSqlCachedResult12virtual_hookEiPv@Base 4:4.6.1
@@ -189,6 +190,7 @@ libQtSql.so.4 libqt4-sql #MINVER#
  _ZN16QSqlDriverPluginD2Ev@Base 4:4.5.3
  _ZN24QSqlRelationalTableModel11qt_metacallEN11QMetaObject4CallEiPPv@Base 4:4.5.3
  _ZN24QSqlRelationalTableModel11qt_metacastEPKc@Base 4:4.5.3
+ _ZN24QSqlRelationalTableModel11setJoinModeENS_8JoinModeE@Base 4:4.8.0
  _ZN24QSqlRelationalTableModel11setRelationEiRK12QSqlRelation@Base 4:4.5.3
  _ZN24QSqlRelationalTableModel13removeColumnsEiiRK11QModelIndex@Base 4:4.5.3
  _ZN24QSqlRelationalTableModel16staticMetaObjectE@Base 4:4.5.3
@@ -204,7 +206,15 @@ libQtSql.so.4 libqt4-sql #MINVER#
  _ZN24QSqlRelationalTableModelD0Ev@Base 4:4.5.3
  _ZN24QSqlRelationalTableModelD1Ev@Base 4:4.5.3
  _ZN24QSqlRelationalTableModelD2Ev@Base 4:4.5.3
- _ZN7QString5clearEv@Base 4:4.5.3
+ _ZN25QAbstractItemModelPrivate10PersistentD1Ev@Base 4:4.7.3
+ _ZN25QAbstractItemModelPrivate10PersistentD2Ev@Base 4:4.7.3
+ _ZN25QAbstractItemModelPrivateD0Ev@Base 4:4.7.3
+ _ZN25QAbstractItemModelPrivateD1Ev@Base 4:4.7.3
+ _ZN25QAbstractItemModelPrivateD2Ev@Base 4:4.7.3
+ _ZN26QSqlDriverFactoryInterfaceD0Ev@Base 4:4.7.3
+ _ZN26QSqlDriverFactoryInterfaceD1Ev@Base 4:4.7.3
+ _ZN26QSqlDriverFactoryInterfaceD2Ev@Base 4:4.7.3
+ (arch=ia64 mips mipsel sparc)_ZN7QString5clearEv@Base 4:4.7.2
  _ZN9QSqlError13setDriverTextERK7QString@Base 4:4.5.3
  _ZN9QSqlError15setDatabaseTextERK7QString@Base 4:4.5.3
  _ZN9QSqlError7setTypeENS_9ErrorTypeE@Base 4:4.5.3

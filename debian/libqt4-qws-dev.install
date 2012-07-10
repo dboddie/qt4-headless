@@ -41,7 +41,9 @@ usr/share/metno-bdiana/include/Qt/qatomic.h
 usr/share/metno-bdiana/include/Qt/qatomic_alpha.h
 usr/share/metno-bdiana/include/Qt/qatomic_arch.h
 usr/share/metno-bdiana/include/Qt/qatomic_arm.h
+usr/share/metno-bdiana/include/Qt/qatomic_armv5.h
 usr/share/metno-bdiana/include/Qt/qatomic_armv6.h
+usr/share/metno-bdiana/include/Qt/qatomic_armv7.h
 usr/share/metno-bdiana/include/Qt/qatomic_avr32.h
 usr/share/metno-bdiana/include/Qt/qatomic_bfin.h
 usr/share/metno-bdiana/include/Qt/qatomic_bootstrap.h
@@ -65,6 +67,7 @@ usr/share/metno-bdiana/include/Qt/qauthenticator.h
 usr/share/metno-bdiana/include/Qt/qbasicatomic.h
 usr/share/metno-bdiana/include/Qt/qbasictimer.h
 usr/share/metno-bdiana/include/Qt/qbenchmark.h
+usr/share/metno-bdiana/include/Qt/qbenchmarkmetric.h
 usr/share/metno-bdiana/include/Qt/qbitarray.h
 usr/share/metno-bdiana/include/Qt/qbitmap.h
 usr/share/metno-bdiana/include/Qt/qboxlayout.h
@@ -92,6 +95,7 @@ usr/share/metno-bdiana/include/Qt/qconfig-dist.h
 usr/share/metno-bdiana/include/Qt/qconfig-large.h
 usr/share/metno-bdiana/include/Qt/qconfig-medium.h
 usr/share/metno-bdiana/include/Qt/qconfig-minimal.h
+usr/share/metno-bdiana/include/Qt/qconfig-nacl.h
 usr/share/metno-bdiana/include/Qt/qconfig-small.h
 usr/share/metno-bdiana/include/Qt/qconfig.h
 usr/share/metno-bdiana/include/Qt/qcontainerfwd.h
@@ -126,6 +130,7 @@ usr/share/metno-bdiana/include/Qt/qdom.h
 usr/share/metno-bdiana/include/Qt/qdrag.h
 usr/share/metno-bdiana/include/Qt/qdrawutil.h
 usr/share/metno-bdiana/include/Qt/qeasingcurve.h
+usr/share/metno-bdiana/include/Qt/qelapsedtimer.h
 usr/share/metno-bdiana/include/Qt/qendian.h
 usr/share/metno-bdiana/include/Qt/qerrormessage.h
 usr/share/metno-bdiana/include/Qt/qevent.h
@@ -151,6 +156,7 @@ usr/share/metno-bdiana/include/Qt/qformlayout.h
 usr/share/metno-bdiana/include/Qt/qframe.h
 usr/share/metno-bdiana/include/Qt/qfsfileengine.h
 usr/share/metno-bdiana/include/Qt/qftp.h
+usr/share/metno-bdiana/include/Qt/qfunctions_nacl.h
 usr/share/metno-bdiana/include/Qt/qfunctions_vxworks.h
 usr/share/metno-bdiana/include/Qt/qfunctions_wince.h
 usr/share/metno-bdiana/include/Qt/qfuture.h
@@ -158,9 +164,12 @@ usr/share/metno-bdiana/include/Qt/qfutureinterface.h
 usr/share/metno-bdiana/include/Qt/qfuturesynchronizer.h
 usr/share/metno-bdiana/include/Qt/qfuturewatcher.h
 usr/share/metno-bdiana/include/Qt/qgenericmatrix.h
+usr/share/metno-bdiana/include/Qt/qgenericplugin_qpa.h
+usr/share/metno-bdiana/include/Qt/qgenericpluginfactory_qpa.h
 usr/share/metno-bdiana/include/Qt/qgesture.h
 usr/share/metno-bdiana/include/Qt/qgesturerecognizer.h
 usr/share/metno-bdiana/include/Qt/qglobal.h
+usr/share/metno-bdiana/include/Qt/qglyphrun.h
 usr/share/metno-bdiana/include/Qt/qgraphicsanchorlayout.h
 usr/share/metno-bdiana/include/Qt/qgraphicseffect.h
 usr/share/metno-bdiana/include/Qt/qgraphicsgridlayout.h
@@ -186,9 +195,11 @@ usr/share/metno-bdiana/include/Qt/qhistorystate.h
 usr/share/metno-bdiana/include/Qt/qhostaddress.h
 usr/share/metno-bdiana/include/Qt/qhostinfo.h
 usr/share/metno-bdiana/include/Qt/qhttp.h
+usr/share/metno-bdiana/include/Qt/qhttpmultipart.h
 usr/share/metno-bdiana/include/Qt/qicon.h
 usr/share/metno-bdiana/include/Qt/qiconengine.h
 usr/share/metno-bdiana/include/Qt/qiconengineplugin.h
+usr/share/metno-bdiana/include/Qt/qidentityproxymodel.h
 usr/share/metno-bdiana/include/Qt/qimage.h
 usr/share/metno-bdiana/include/Qt/qimageiohandler.h
 usr/share/metno-bdiana/include/Qt/qimagereader.h
@@ -262,6 +273,8 @@ usr/share/metno-bdiana/include/Qt/qmovie.h
 usr/share/metno-bdiana/include/Qt/qmutex.h
 usr/share/metno-bdiana/include/Qt/qnamespace.h
 usr/share/metno-bdiana/include/Qt/qnetworkaccessmanager.h
+usr/share/metno-bdiana/include/Qt/qnetworkconfigmanager.h
+usr/share/metno-bdiana/include/Qt/qnetworkconfiguration.h
 usr/share/metno-bdiana/include/Qt/qnetworkcookie.h
 usr/share/metno-bdiana/include/Qt/qnetworkcookiejar.h
 usr/share/metno-bdiana/include/Qt/qnetworkdiskcache.h
@@ -269,6 +282,7 @@ usr/share/metno-bdiana/include/Qt/qnetworkinterface.h
 usr/share/metno-bdiana/include/Qt/qnetworkproxy.h
 usr/share/metno-bdiana/include/Qt/qnetworkreply.h
 usr/share/metno-bdiana/include/Qt/qnetworkrequest.h
+usr/share/metno-bdiana/include/Qt/qnetworksession.h
 usr/share/metno-bdiana/include/Qt/qnumeric.h
 usr/share/metno-bdiana/include/Qt/qobject.h
 usr/share/metno-bdiana/include/Qt/qobjectcleanuphandler.h
@@ -289,6 +303,17 @@ usr/share/metno-bdiana/include/Qt/qpixmap.h
 usr/share/metno-bdiana/include/Qt/qpixmapcache.h
 usr/share/metno-bdiana/include/Qt/qplaintextedit.h
 usr/share/metno-bdiana/include/Qt/qplastiquestyle.h
+usr/share/metno-bdiana/include/Qt/qplatformclipboard_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformcursor_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformeventloopintegration_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformfontdatabase_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformglcontext_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformintegration_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformintegrationplugin_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformnativeinterface_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformscreen_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformwindow_qpa.h
+usr/share/metno-bdiana/include/Qt/qplatformwindowformat_qpa.h
 usr/share/metno-bdiana/include/Qt/qplugin.h
 usr/share/metno-bdiana/include/Qt/qpluginloader.h
 usr/share/metno-bdiana/include/Qt/qpoint.h
@@ -310,6 +335,7 @@ usr/share/metno-bdiana/include/Qt/qpushbutton.h
 usr/share/metno-bdiana/include/Qt/qquaternion.h
 usr/share/metno-bdiana/include/Qt/qqueue.h
 usr/share/metno-bdiana/include/Qt/qradiobutton.h
+usr/share/metno-bdiana/include/Qt/qrawfont.h
 usr/share/metno-bdiana/include/Qt/qreadwritelock.h
 usr/share/metno-bdiana/include/Qt/qrect.h
 usr/share/metno-bdiana/include/Qt/qregexp.h
@@ -323,6 +349,7 @@ usr/share/metno-bdiana/include/Qt/qs60mainappui.h
 usr/share/metno-bdiana/include/Qt/qs60maindocument.h
 usr/share/metno-bdiana/include/Qt/qs60style.h
 usr/share/metno-bdiana/include/Qt/qscopedpointer.h
+usr/share/metno-bdiana/include/Qt/qscopedvaluerollback.h
 usr/share/metno-bdiana/include/Qt/qscreen_qws.h
 usr/share/metno-bdiana/include/Qt/qscreendriverfactory_qws.h
 usr/share/metno-bdiana/include/Qt/qscreendriverplugin_qws.h
@@ -366,6 +393,7 @@ usr/share/metno-bdiana/include/Qt/qsql_odbc.h
 usr/share/metno-bdiana/include/Qt/qsql_psql.h
 usr/share/metno-bdiana/include/Qt/qsql_sqlite.h
 usr/share/metno-bdiana/include/Qt/qsql_sqlite2.h
+usr/share/metno-bdiana/include/Qt/qsql_symsql.h
 usr/share/metno-bdiana/include/Qt/qsql_tds.h
 usr/share/metno-bdiana/include/Qt/qsqldatabase.h
 usr/share/metno-bdiana/include/Qt/qsqldriver.h
@@ -393,6 +421,7 @@ usr/share/metno-bdiana/include/Qt/qstackedwidget.h
 usr/share/metno-bdiana/include/Qt/qstandarditemmodel.h
 usr/share/metno-bdiana/include/Qt/qstate.h
 usr/share/metno-bdiana/include/Qt/qstatemachine.h
+usr/share/metno-bdiana/include/Qt/qstatictext.h
 usr/share/metno-bdiana/include/Qt/qstatusbar.h
 usr/share/metno-bdiana/include/Qt/qstring.h
 usr/share/metno-bdiana/include/Qt/qstringbuilder.h
@@ -518,6 +547,7 @@ usr/share/metno-bdiana/include/Qt/qwindowsstyle.h
 usr/share/metno-bdiana/include/Qt/qwindowsvistastyle.h
 usr/share/metno-bdiana/include/Qt/qwindowsxpstyle.h
 usr/share/metno-bdiana/include/Qt/qwindowsystem_qws.h
+usr/share/metno-bdiana/include/Qt/qwindowsysteminterface_qpa.h
 usr/share/metno-bdiana/include/Qt/qwizard.h
 usr/share/metno-bdiana/include/Qt/qwmatrix.h
 usr/share/metno-bdiana/include/Qt/qworkspace.h
@@ -545,6 +575,7 @@ usr/share/metno-bdiana/include/QtCore/QAbstractListModel
 usr/share/metno-bdiana/include/QtCore/QAbstractState
 usr/share/metno-bdiana/include/QtCore/QAbstractTableModel
 usr/share/metno-bdiana/include/QtCore/QAbstractTransition
+usr/share/metno-bdiana/include/QtCore/QAnimationDriver
 usr/share/metno-bdiana/include/QtCore/QAnimationGroup
 usr/share/metno-bdiana/include/QtCore/QArgument
 usr/share/metno-bdiana/include/QtCore/QAtomicInt
@@ -580,6 +611,7 @@ usr/share/metno-bdiana/include/QtCore/QDir
 usr/share/metno-bdiana/include/QtCore/QDirIterator
 usr/share/metno-bdiana/include/QtCore/QDynamicPropertyChangeEvent
 usr/share/metno-bdiana/include/QtCore/QEasingCurve
+usr/share/metno-bdiana/include/QtCore/QElapsedTimer
 usr/share/metno-bdiana/include/QtCore/QEvent
 usr/share/metno-bdiana/include/QtCore/QEventLoop
 usr/share/metno-bdiana/include/QtCore/QEventTransition
@@ -663,6 +695,7 @@ usr/share/metno-bdiana/include/QtCore/QMutableSetIterator
 usr/share/metno-bdiana/include/QtCore/QMutableStringListIterator
 usr/share/metno-bdiana/include/QtCore/QMutableVectorIterator
 usr/share/metno-bdiana/include/QtCore/QMutex
+usr/share/metno-bdiana/include/QtCore/QMutexData
 usr/share/metno-bdiana/include/QtCore/QMutexLocker
 usr/share/metno-bdiana/include/QtCore/QNoDebug
 usr/share/metno-bdiana/include/QtCore/QNoImplicitBoolCast
@@ -696,6 +729,7 @@ usr/share/metno-bdiana/include/QtCore/QScopedPointer
 usr/share/metno-bdiana/include/QtCore/QScopedPointerArrayDeleter
 usr/share/metno-bdiana/include/QtCore/QScopedPointerDeleter
 usr/share/metno-bdiana/include/QtCore/QScopedPointerPodDeleter
+usr/share/metno-bdiana/include/QtCore/QScopedValueRollback
 usr/share/metno-bdiana/include/QtCore/QSemaphore
 usr/share/metno-bdiana/include/QtCore/QSequentialAnimationGroup
 usr/share/metno-bdiana/include/QtCore/QSet
@@ -793,6 +827,7 @@ usr/share/metno-bdiana/include/QtCore/QtCleanUpFunction
 usr/share/metno-bdiana/include/QtCore/QtConcurrentFilter
 usr/share/metno-bdiana/include/QtCore/QtConcurrentMap
 usr/share/metno-bdiana/include/QtCore/QtConcurrentRun
+usr/share/metno-bdiana/include/QtCore/QtConfig
 usr/share/metno-bdiana/include/QtCore/QtContainerFwd
 usr/share/metno-bdiana/include/QtCore/QtCore
 usr/share/metno-bdiana/include/QtCore/QtDebug
@@ -813,7 +848,9 @@ usr/share/metno-bdiana/include/QtCore/qatomic.h
 usr/share/metno-bdiana/include/QtCore/qatomic_alpha.h
 usr/share/metno-bdiana/include/QtCore/qatomic_arch.h
 usr/share/metno-bdiana/include/QtCore/qatomic_arm.h
+usr/share/metno-bdiana/include/QtCore/qatomic_armv5.h
 usr/share/metno-bdiana/include/QtCore/qatomic_armv6.h
+usr/share/metno-bdiana/include/QtCore/qatomic_armv7.h
 usr/share/metno-bdiana/include/QtCore/qatomic_avr32.h
 usr/share/metno-bdiana/include/QtCore/qatomic_bfin.h
 usr/share/metno-bdiana/include/QtCore/qatomic_bootstrap.h
@@ -845,6 +882,7 @@ usr/share/metno-bdiana/include/QtCore/qconfig-dist.h
 usr/share/metno-bdiana/include/QtCore/qconfig-large.h
 usr/share/metno-bdiana/include/QtCore/qconfig-medium.h
 usr/share/metno-bdiana/include/QtCore/qconfig-minimal.h
+usr/share/metno-bdiana/include/QtCore/qconfig-nacl.h
 usr/share/metno-bdiana/include/QtCore/qconfig-small.h
 usr/share/metno-bdiana/include/QtCore/qconfig.h
 usr/share/metno-bdiana/include/QtCore/qcontainerfwd.h
@@ -858,6 +896,7 @@ usr/share/metno-bdiana/include/QtCore/qdebug.h
 usr/share/metno-bdiana/include/QtCore/qdir.h
 usr/share/metno-bdiana/include/QtCore/qdiriterator.h
 usr/share/metno-bdiana/include/QtCore/qeasingcurve.h
+usr/share/metno-bdiana/include/QtCore/qelapsedtimer.h
 usr/share/metno-bdiana/include/QtCore/qendian.h
 usr/share/metno-bdiana/include/QtCore/qeventloop.h
 usr/share/metno-bdiana/include/QtCore/qeventtransition.h
@@ -869,6 +908,7 @@ usr/share/metno-bdiana/include/QtCore/qfilesystemwatcher.h
 usr/share/metno-bdiana/include/QtCore/qfinalstate.h
 usr/share/metno-bdiana/include/QtCore/qfsfileengine.h
 usr/share/metno-bdiana/include/QtCore/qfunctions_vxworks.h
+usr/share/metno-bdiana/include/QtCore/qfunctions_nacl.h
 usr/share/metno-bdiana/include/QtCore/qfunctions_wince.h
 usr/share/metno-bdiana/include/QtCore/qfuture.h
 usr/share/metno-bdiana/include/QtCore/qfutureinterface.h
@@ -913,6 +953,7 @@ usr/share/metno-bdiana/include/QtCore/qregexp.h
 usr/share/metno-bdiana/include/QtCore/qresource.h
 usr/share/metno-bdiana/include/QtCore/qrunnable.h
 usr/share/metno-bdiana/include/QtCore/qscopedpointer.h
+usr/share/metno-bdiana/include/QtCore/qscopedvaluerollback.h
 usr/share/metno-bdiana/include/QtCore/qsemaphore.h
 usr/share/metno-bdiana/include/QtCore/qsequentialanimationgroup.h
 usr/share/metno-bdiana/include/QtCore/qset.h
@@ -1081,9 +1122,13 @@ usr/share/metno-bdiana/include/QtGui/QFontMetricsF
 usr/share/metno-bdiana/include/QtGui/QFormLayout
 usr/share/metno-bdiana/include/QtGui/QFrame
 usr/share/metno-bdiana/include/QtGui/QGenericMatrix
+usr/share/metno-bdiana/include/QtGui/QGenericPlugin
+usr/share/metno-bdiana/include/QtGui/QGenericPluginFactory
+usr/share/metno-bdiana/include/QtGui/QGenericPluginFactoryInterface
 usr/share/metno-bdiana/include/QtGui/QGesture
 usr/share/metno-bdiana/include/QtGui/QGestureEvent
 usr/share/metno-bdiana/include/QtGui/QGestureRecognizer
+usr/share/metno-bdiana/include/QtGui/QGlyphRun
 usr/share/metno-bdiana/include/QtGui/QGradient
 usr/share/metno-bdiana/include/QtGui/QGradientStop
 usr/share/metno-bdiana/include/QtGui/QGradientStops
@@ -1143,6 +1188,7 @@ usr/share/metno-bdiana/include/QtGui/QIconEnginePlugin
 usr/share/metno-bdiana/include/QtGui/QIconEnginePluginV2
 usr/share/metno-bdiana/include/QtGui/QIconEngineV2
 usr/share/metno-bdiana/include/QtGui/QIconSet
+usr/share/metno-bdiana/include/QtGui/QIdentityProxyModel
 usr/share/metno-bdiana/include/QtGui/QImage
 usr/share/metno-bdiana/include/QtGui/QImageIOHandler
 usr/share/metno-bdiana/include/QtGui/QImageIOHandlerFactoryInterface
@@ -1157,6 +1203,7 @@ usr/share/metno-bdiana/include/QtGui/QInputContextPlugin
 usr/share/metno-bdiana/include/QtGui/QInputDialog
 usr/share/metno-bdiana/include/QtGui/QInputEvent
 usr/share/metno-bdiana/include/QtGui/QInputMethodEvent
+usr/share/metno-bdiana/include/QtGui/QIntMouseHandler
 usr/share/metno-bdiana/include/QtGui/QIntValidator
 usr/share/metno-bdiana/include/QtGui/QItemDelegate
 usr/share/metno-bdiana/include/QtGui/QItemEditorCreator
@@ -1235,6 +1282,20 @@ usr/share/metno-bdiana/include/QtGui/QPixmapCache
 usr/share/metno-bdiana/include/QtGui/QPlainTextDocumentLayout
 usr/share/metno-bdiana/include/QtGui/QPlainTextEdit
 usr/share/metno-bdiana/include/QtGui/QPlastiqueStyle
+usr/share/metno-bdiana/include/QtGui/QPlatformClipboard
+usr/share/metno-bdiana/include/QtGui/QPlatformCursor
+usr/share/metno-bdiana/include/QtGui/QPlatformCursorImage
+usr/share/metno-bdiana/include/QtGui/QPlatformCursorPrivate
+usr/share/metno-bdiana/include/QtGui/QPlatformEventLoopIntegration
+usr/share/metno-bdiana/include/QtGui/QPlatformFontDatabase
+usr/share/metno-bdiana/include/QtGui/QPlatformGLContext
+usr/share/metno-bdiana/include/QtGui/QPlatformIntegration
+usr/share/metno-bdiana/include/QtGui/QPlatformIntegrationFactoryInterface
+usr/share/metno-bdiana/include/QtGui/QPlatformIntegrationPlugin
+usr/share/metno-bdiana/include/QtGui/QPlatformNativeInterface
+usr/share/metno-bdiana/include/QtGui/QPlatformScreen
+usr/share/metno-bdiana/include/QtGui/QPlatformWindow
+usr/share/metno-bdiana/include/QtGui/QPlatformWindowFormat
 usr/share/metno-bdiana/include/QtGui/QPolygon
 usr/share/metno-bdiana/include/QtGui/QPolygonF
 usr/share/metno-bdiana/include/QtGui/QPoolEntry
@@ -1256,6 +1317,7 @@ usr/share/metno-bdiana/include/QtGui/QQnxScreen
 usr/share/metno-bdiana/include/QtGui/QQuaternion
 usr/share/metno-bdiana/include/QtGui/QRadialGradient
 usr/share/metno-bdiana/include/QtGui/QRadioButton
+usr/share/metno-bdiana/include/QtGui/QRawFont
 usr/share/metno-bdiana/include/QtGui/QRegExpValidator
 usr/share/metno-bdiana/include/QtGui/QRegion
 usr/share/metno-bdiana/include/QtGui/QResizeEvent
@@ -1291,6 +1353,7 @@ usr/share/metno-bdiana/include/QtGui/QStackedWidget
 usr/share/metno-bdiana/include/QtGui/QStandardItem
 usr/share/metno-bdiana/include/QtGui/QStandardItemEditorCreator
 usr/share/metno-bdiana/include/QtGui/QStandardItemModel
+usr/share/metno-bdiana/include/QtGui/QStaticText
 usr/share/metno-bdiana/include/QtGui/QStatusBar
 usr/share/metno-bdiana/include/QtGui/QStatusTipEvent
 usr/share/metno-bdiana/include/QtGui/QStringListModel
@@ -1342,6 +1405,7 @@ usr/share/metno-bdiana/include/QtGui/QStyleOptionViewItemV4
 usr/share/metno-bdiana/include/QtGui/QStylePainter
 usr/share/metno-bdiana/include/QtGui/QStylePlugin
 usr/share/metno-bdiana/include/QtGui/QStyledItemDelegate
+usr/share/metno-bdiana/include/QtGui/QSupportedWritingSystems
 usr/share/metno-bdiana/include/QtGui/QSwipeGesture
 usr/share/metno-bdiana/include/QtGui/QSymbianEvent
 usr/share/metno-bdiana/include/QtGui/QSyntaxHighlighter
@@ -1426,6 +1490,7 @@ usr/share/metno-bdiana/include/QtGui/QWSDisplay
 usr/share/metno-bdiana/include/QtGui/QWSEmbedWidget
 usr/share/metno-bdiana/include/QtGui/QWSEvent
 usr/share/metno-bdiana/include/QtGui/QWSInputMethod
+usr/share/metno-bdiana/include/QtGui/QWSIntKeyboardHandler
 usr/share/metno-bdiana/include/QtGui/QWSInternalWindowInfo
 usr/share/metno-bdiana/include/QtGui/QWSKeyboardHandler
 usr/share/metno-bdiana/include/QtGui/QWSKeyboardHandlerFactoryInterface
@@ -1464,6 +1529,7 @@ usr/share/metno-bdiana/include/QtGui/QWidgetList
 usr/share/metno-bdiana/include/QtGui/QWidgetMapper
 usr/share/metno-bdiana/include/QtGui/QWidgetSet
 usr/share/metno-bdiana/include/QtGui/QWindowStateChangeEvent
+usr/share/metno-bdiana/include/QtGui/QWindowSystemInterface
 usr/share/metno-bdiana/include/QtGui/QWindowsCEStyle
 usr/share/metno-bdiana/include/QtGui/QWindowsMime
 usr/share/metno-bdiana/include/QtGui/QWindowsMobileStyle
@@ -1550,8 +1616,11 @@ usr/share/metno-bdiana/include/QtGui/qfontmetrics.h
 usr/share/metno-bdiana/include/QtGui/qformlayout.h
 usr/share/metno-bdiana/include/QtGui/qframe.h
 usr/share/metno-bdiana/include/QtGui/qgenericmatrix.h
+usr/share/metno-bdiana/include/QtGui/qgenericplugin_qpa.h
+usr/share/metno-bdiana/include/QtGui/qgenericpluginfactory_qpa.h
 usr/share/metno-bdiana/include/QtGui/qgesture.h
 usr/share/metno-bdiana/include/QtGui/qgesturerecognizer.h
+usr/share/metno-bdiana/include/QtGui/qglyphrun.h
 usr/share/metno-bdiana/include/QtGui/qgraphicsanchorlayout.h
 usr/share/metno-bdiana/include/QtGui/qgraphicseffect.h
 usr/share/metno-bdiana/include/QtGui/qgraphicsgridlayout.h
@@ -1574,6 +1643,7 @@ usr/share/metno-bdiana/include/QtGui/qheaderview.h
 usr/share/metno-bdiana/include/QtGui/qicon.h
 usr/share/metno-bdiana/include/QtGui/qiconengine.h
 usr/share/metno-bdiana/include/QtGui/qiconengineplugin.h
+usr/share/metno-bdiana/include/QtGui/qidentityproxymodel.h
 usr/share/metno-bdiana/include/QtGui/qimage.h
 usr/share/metno-bdiana/include/QtGui/qimageiohandler.h
 usr/share/metno-bdiana/include/QtGui/qimagereader.h
@@ -1641,6 +1711,17 @@ usr/share/metno-bdiana/include/QtGui/qpixmap.h
 usr/share/metno-bdiana/include/QtGui/qpixmapcache.h
 usr/share/metno-bdiana/include/QtGui/qplaintextedit.h
 usr/share/metno-bdiana/include/QtGui/qplastiquestyle.h
+usr/share/metno-bdiana/include/QtGui/qplatformclipboard_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformcursor_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformeventloopintegration_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformfontdatabase_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformglcontext_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformintegration_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformintegrationplugin_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformnativeinterface_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformscreen_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformwindow_qpa.h
+usr/share/metno-bdiana/include/QtGui/qplatformwindowformat_qpa.h
 usr/share/metno-bdiana/include/QtGui/qpolygon.h
 usr/share/metno-bdiana/include/QtGui/qprintdialog.h
 usr/share/metno-bdiana/include/QtGui/qprintengine.h
@@ -1655,6 +1736,7 @@ usr/share/metno-bdiana/include/QtGui/qproxystyle.h
 usr/share/metno-bdiana/include/QtGui/qpushbutton.h
 usr/share/metno-bdiana/include/QtGui/qquaternion.h
 usr/share/metno-bdiana/include/QtGui/qradiobutton.h
+usr/share/metno-bdiana/include/QtGui/qrawfont.h
 usr/share/metno-bdiana/include/QtGui/qregion.h
 usr/share/metno-bdiana/include/QtGui/qrgb.h
 usr/share/metno-bdiana/include/QtGui/qrubberband.h
@@ -1686,6 +1768,7 @@ usr/share/metno-bdiana/include/QtGui/qsplitter.h
 usr/share/metno-bdiana/include/QtGui/qstackedlayout.h
 usr/share/metno-bdiana/include/QtGui/qstackedwidget.h
 usr/share/metno-bdiana/include/QtGui/qstandarditemmodel.h
+usr/share/metno-bdiana/include/QtGui/qstatictext.h
 usr/share/metno-bdiana/include/QtGui/qstatusbar.h
 usr/share/metno-bdiana/include/QtGui/qstringlistmodel.h
 usr/share/metno-bdiana/include/QtGui/qstyle.h
@@ -1742,6 +1825,7 @@ usr/share/metno-bdiana/include/QtGui/qwindowsstyle.h
 usr/share/metno-bdiana/include/QtGui/qwindowsvistastyle.h
 usr/share/metno-bdiana/include/QtGui/qwindowsxpstyle.h
 usr/share/metno-bdiana/include/QtGui/qwindowsystem_qws.h
+usr/share/metno-bdiana/include/QtGui/qwindowsysteminterface_qpa.h
 usr/share/metno-bdiana/include/QtGui/qwizard.h
 usr/share/metno-bdiana/include/QtGui/qwmatrix.h
 usr/share/metno-bdiana/include/QtGui/qworkspace.h
@@ -1764,6 +1848,8 @@ usr/share/metno-bdiana/include/QtNetwork/QHostAddress
 usr/share/metno-bdiana/include/QtNetwork/QHostInfo
 usr/share/metno-bdiana/include/QtNetwork/QHttp
 usr/share/metno-bdiana/include/QtNetwork/QHttpHeader
+usr/share/metno-bdiana/include/QtNetwork/QHttpMultiPart
+usr/share/metno-bdiana/include/QtNetwork/QHttpPart
 usr/share/metno-bdiana/include/QtNetwork/QHttpRequestHeader
 usr/share/metno-bdiana/include/QtNetwork/QHttpResponseHeader
 usr/share/metno-bdiana/include/QtNetwork/QIPv6Address
@@ -1772,6 +1858,8 @@ usr/share/metno-bdiana/include/QtNetwork/QLocalSocket
 usr/share/metno-bdiana/include/QtNetwork/QNetworkAccessManager
 usr/share/metno-bdiana/include/QtNetwork/QNetworkAddressEntry
 usr/share/metno-bdiana/include/QtNetwork/QNetworkCacheMetaData
+usr/share/metno-bdiana/include/QtNetwork/QNetworkConfiguration
+usr/share/metno-bdiana/include/QtNetwork/QNetworkConfigurationManager
 usr/share/metno-bdiana/include/QtNetwork/QNetworkCookie
 usr/share/metno-bdiana/include/QtNetwork/QNetworkCookieJar
 usr/share/metno-bdiana/include/QtNetwork/QNetworkDiskCache
@@ -1781,6 +1869,7 @@ usr/share/metno-bdiana/include/QtNetwork/QNetworkProxyFactory
 usr/share/metno-bdiana/include/QtNetwork/QNetworkProxyQuery
 usr/share/metno-bdiana/include/QtNetwork/QNetworkReply
 usr/share/metno-bdiana/include/QtNetwork/QNetworkRequest
+usr/share/metno-bdiana/include/QtNetwork/QNetworkSession
 usr/share/metno-bdiana/include/QtNetwork/QSsl
 usr/share/metno-bdiana/include/QtNetwork/QSslCertificate
 usr/share/metno-bdiana/include/QtNetwork/QSslCipher
@@ -1801,9 +1890,12 @@ usr/share/metno-bdiana/include/QtNetwork/qftp.h
 usr/share/metno-bdiana/include/QtNetwork/qhostaddress.h
 usr/share/metno-bdiana/include/QtNetwork/qhostinfo.h
 usr/share/metno-bdiana/include/QtNetwork/qhttp.h
+usr/share/metno-bdiana/include/QtNetwork/qhttpmultipart.h
 usr/share/metno-bdiana/include/QtNetwork/qlocalserver.h
 usr/share/metno-bdiana/include/QtNetwork/qlocalsocket.h
 usr/share/metno-bdiana/include/QtNetwork/qnetworkaccessmanager.h
+usr/share/metno-bdiana/include/QtNetwork/qnetworkconfigmanager.h
+usr/share/metno-bdiana/include/QtNetwork/qnetworkconfiguration.h
 usr/share/metno-bdiana/include/QtNetwork/qnetworkcookie.h
 usr/share/metno-bdiana/include/QtNetwork/qnetworkcookiejar.h
 usr/share/metno-bdiana/include/QtNetwork/qnetworkdiskcache.h
@@ -1811,6 +1903,7 @@ usr/share/metno-bdiana/include/QtNetwork/qnetworkinterface.h
 usr/share/metno-bdiana/include/QtNetwork/qnetworkproxy.h
 usr/share/metno-bdiana/include/QtNetwork/qnetworkreply.h
 usr/share/metno-bdiana/include/QtNetwork/qnetworkrequest.h
+usr/share/metno-bdiana/include/QtNetwork/qnetworksession.h
 usr/share/metno-bdiana/include/QtNetwork/qssl.h
 usr/share/metno-bdiana/include/QtNetwork/qsslcertificate.h
 usr/share/metno-bdiana/include/QtNetwork/qsslcipher.h

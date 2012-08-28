@@ -1,3 +1,15 @@
+qt4-qws (4:4.8.1-metno2) precise; urgency=low
+
+  * Added missing header files.
+
+ -- David Boddie <david.boddie@met.no>  Tue, 28 Aug 2012 12:10:00 +0200
+
+qt4-qws (4:4.8.1-metno1) precise; urgency=low
+
+  * Forced rebuild to fix packaging issue.
+
+ -- David Boddie <david.boddie@met.no>  Mon, 27 Aug 2012 19:10:00 +0200
+
 qt4-qws (4:4.8.1-metno0) precise; urgency=low
 
   * Upgraded Qt to the version packaged in Ubuntu 12.04.

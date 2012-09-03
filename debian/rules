@@ -117,6 +117,7 @@ endif
 	./configure -confirm-license \
 	            -depths 16,32 \
 	            -embedded \
+                    -qconfig wms \
 	            -exceptions \
 	            -fast \
 	            -glib \

@@ -1,0 +1,273 @@
+--- /dev/null	2012-07-02 14:47:27.441809000 +0200
++++ qt4-qws-4.8.1/src/corelib/global/qconfig-wms.h	2012-09-03 15:05:53.045399358 +0200
+@@ -0,0 +1,270 @@
++
++/* Dialogs */
++#ifndef QT_NO_MESSAGEBOX
++#  define QT_NO_MESSAGEBOX
++#endif
++#ifndef QT_NO_WIZARD
++#  define QT_NO_WIZARD
++#endif
++
++/* File I/O */
++#ifndef QT_NO_DOM
++#  define QT_NO_DOM
++#endif
++#ifndef QT_NO_FILESYSTEMWATCHER
++#  define QT_NO_FILESYSTEMWATCHER
++#endif
++#ifndef QT_NO_PROCESS
++#  define QT_NO_PROCESS
++#endif
++
++/* Fonts */
++#ifndef QT_NO_QWS_QPF
++#  define QT_NO_QWS_QPF
++#endif
++#ifndef QT_NO_QWS_QPF2
++#  define QT_NO_QWS_QPF2
++#endif
++
++/* Images */
++#ifndef QT_NO_IMAGEFORMAT_BMP
++#  define QT_NO_IMAGEFORMAT_BMP
++#endif
++#ifndef QT_NO_IMAGEFORMAT_PPM
++#  define QT_NO_IMAGEFORMAT_PPM
++#endif
++#ifndef QT_NO_IMAGEFORMAT_XBM
++#  define QT_NO_IMAGEFORMAT_XBM
++#endif
++#ifndef QT_NO_IMAGEFORMAT_XPM
++#  define QT_NO_IMAGEFORMAT_XPM
++#endif
++#ifndef QT_NO_IMAGE_HEURISTIC_MASK
++#  define QT_NO_IMAGE_HEURISTIC_MASK
++#endif
++#ifndef QT_NO_MOVIE
++#  define QT_NO_MOVIE
++#endif
++
++/* Internationalization */
++#ifndef QT_NO_TRANSLATION
++#  define QT_NO_TRANSLATION
++#endif
++
++/* Kernel */
++#ifndef QT_NO_ACTION
++#  define QT_NO_ACTION
++#endif
++#ifndef QT_NO_CLIPBOARD
++#  define QT_NO_CLIPBOARD
++#endif
++#ifndef QT_NO_CONCURRENT
++#  define QT_NO_CONCURRENT
++#endif
++#ifndef QT_NO_CURSOR
++#  define QT_NO_CURSOR
++#endif
++#ifndef QT_NO_DRAGANDDROP
++#  define QT_NO_DRAGANDDROP
++#endif
++#ifndef QT_NO_IM
++#  define QT_NO_IM
++#endif
++#ifndef QT_NO_SESSIONMANAGER
++#  define QT_NO_SESSIONMANAGER
++#endif
++#ifndef QT_NO_SHAREDMEMORY
++#  define QT_NO_SHAREDMEMORY
++#endif
++#ifndef QT_NO_SHORTCUT
++#  define QT_NO_SHORTCUT
++#endif
++#ifndef QT_NO_SOUND
++#  define QT_NO_SOUND
++#endif
++#ifndef QT_NO_SYSTEMSEMAPHORE
++#  define QT_NO_SYSTEMSEMAPHORE
++#endif
++#ifndef QT_NO_TABLETEVENT
++#  define QT_NO_TABLETEVENT
++#endif
++#ifndef QT_NO_WHEELEVENT
++#  define QT_NO_WHEELEVENT
++#endif
++#ifndef QT_NO_TEXTODFWRITER
++#  define QT_NO_TEXTODFWRITER
++#endif
++
++/* Networking */
++#ifndef QT_NO_BEARERMANAGEMENT
++#  define QT_NO_BEARERMANAGEMENT
++#endif
++#ifndef QT_NO_COP
++#  define QT_NO_COP
++#endif
++
++/* Painting */
++#ifndef QT_NO_DIRECTPAINTER
++#  define QT_NO_DIRECTPAINTER
++#endif
++#ifndef QT_NO_PAINT_DEBUG
++#  define QT_NO_PAINT_DEBUG
++#endif
++#ifndef QT_NO_CUPS
++#  define QT_NO_CUPS
++#endif
++#ifndef QT_NO_RASTERCALLBACKS
++#  define QT_NO_RASTERCALLBACKS
++#endif
++
++/* Phonon */
++#ifndef QT_NO_PHONON_ABSTRACTMEDIASTREAM
++#  define QT_NO_PHONON_ABSTRACTMEDIASTREAM
++#endif
++#ifndef QT_NO_PHONON_AUDIOCAPTURE
++#  define QT_NO_PHONON_AUDIOCAPTURE
++#endif
++#ifndef QT_NO_PHONON_EFFECT
++#  define QT_NO_PHONON_EFFECT
++#endif
++#ifndef QT_NO_PHONON_MEDIACONTROLLER
++#  define QT_NO_PHONON_MEDIACONTROLLER
++#endif
++#ifndef QT_NO_PHONON_OBJECTDESCRIPTIONMODEL
++#  define QT_NO_PHONON_OBJECTDESCRIPTIONMODEL
++#endif
++#ifndef QT_NO_PHONON_PLATFORMPLUGIN
++#  define QT_NO_PHONON_PLATFORMPLUGIN
++#endif
++#ifndef QT_NO_PHONON_SETTINGSGROUP
++#  define QT_NO_PHONON_SETTINGSGROUP
++#endif
++#ifndef QT_NO_PHONON_VIDEO
++#  define QT_NO_PHONON_VIDEO
++#endif
++
++/* Qt for Embedded Linux */
++#ifndef QT_NO_QWSEMBEDWIDGET
++#  define QT_NO_QWSEMBEDWIDGET
++#endif
++#ifndef QT_NO_QWS_CURSOR
++#  define QT_NO_QWS_CURSOR
++#endif
++#ifndef QT_NO_QWS_DECORATION_DEFAULT
++#  define QT_NO_QWS_DECORATION_DEFAULT
++#endif
++#ifndef QT_NO_QWS_KEYBOARD
++#  define QT_NO_QWS_KEYBOARD
++#endif
++#ifndef QT_NO_QWS_MOUSE
++#  define QT_NO_QWS_MOUSE
++#endif
++#ifndef QT_NO_QWS_MOUSE_AUTO
++#  define QT_NO_QWS_MOUSE_AUTO
++#endif
++#ifndef QT_NO_QWS_MOUSE_MANUAL
++#  define QT_NO_QWS_MOUSE_MANUAL
++#endif
++#ifndef QT_NO_QWS_MULTIPROCESS
++#  define QT_NO_QWS_MULTIPROCESS
++#endif
++#ifndef QT_NO_QWS_PROXYSCREEN
++#  define QT_NO_QWS_PROXYSCREEN
++#endif
++
++/* SVG */
++#ifndef QT_NO_SVGRENDERER
++#  define QT_NO_SVGRENDERER
++#endif
++
++/* Styles */
++#ifndef QT_NO_STYLE_MOTIF
++#  define QT_NO_STYLE_MOTIF
++#endif
++#ifndef QT_NO_STYLE_WINDOWS
++#  define QT_NO_STYLE_WINDOWS
++#endif
++
++/* Utilities */
++#ifndef QT_NO_ANIMATION
++#  define QT_NO_ANIMATION
++#endif
++#ifndef QT_NO_DESKTOPSERVICES
++#  define QT_NO_DESKTOPSERVICES
++#endif
++#ifndef QT_NO_GESTURES
++#  define QT_NO_GESTURES
++#endif
++#ifndef QT_NO_STATEMACHINE
++#  define QT_NO_STATEMACHINE
++#endif
++#ifndef QT_NO_SYSTEMTRAYICON
++#  define QT_NO_SYSTEMTRAYICON
++#endif
++#ifndef QT_NO_UNDOCOMMAND
++#  define QT_NO_UNDOCOMMAND
++#endif
++
++/* Widgets */
++#ifndef QT_NO_GROUPBOX
++#  define QT_NO_GROUPBOX
++#endif
++#ifndef QT_NO_LCDNUMBER
++#  define QT_NO_LCDNUMBER
++#endif
++#ifndef QT_NO_LINEEDIT
++#  define QT_NO_LINEEDIT
++#endif
++#ifndef QT_NO_LISTWIDGET
++#  define QT_NO_LISTWIDGET
++#endif
++#ifndef QT_NO_MENU
++#  define QT_NO_MENU
++#endif
++#ifndef QT_NO_PROGRESSBAR
++#  define QT_NO_PROGRESSBAR
++#endif
++#ifndef QT_NO_RESIZEHANDLER
++#  define QT_NO_RESIZEHANDLER
++#endif
++#ifndef QT_NO_RUBBERBAND
++#  define QT_NO_RUBBERBAND
++#endif
++#ifndef QT_NO_SIGNALMAPPER
++#  define QT_NO_SIGNALMAPPER
++#endif
++#ifndef QT_NO_SIZEGRIP
++#  define QT_NO_SIZEGRIP
++#endif
++#ifndef QT_NO_SLIDER
++#  define QT_NO_SLIDER
++#endif
++#ifndef QT_NO_SPINWIDGET
++#  define QT_NO_SPINWIDGET
++#endif
++#ifndef QT_NO_SPLASHSCREEN
++#  define QT_NO_SPLASHSCREEN
++#endif
++#ifndef QT_NO_STACKEDWIDGET
++#  define QT_NO_STACKEDWIDGET
++#endif
++#ifndef QT_NO_STATUSBAR
++#  define QT_NO_STATUSBAR
++#endif
++#ifndef QT_NO_STATUSTIP
++#  define QT_NO_STATUSTIP
++#endif
++#ifndef QT_NO_TOOLBUTTON
++#  define QT_NO_TOOLBUTTON
++#endif
++#ifndef QT_NO_TOOLTIP
++#  define QT_NO_TOOLTIP
++#endif
++#ifndef QT_NO_VALIDATOR
++#  define QT_NO_VALIDATOR
++#endif
++
++/* Windows */
++#ifndef QT_NO_WIN_ACTIVEQT
++#  define QT_NO_WIN_ACTIVEQT
++#endif

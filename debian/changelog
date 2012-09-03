@@ -1,3 +1,9 @@
+qt4-qws (4:4.8.1-metno3) precise; urgency=low
+
+  * Changed the configuration to make a smaller library.
+
+ -- David Boddie <david.boddie@met.no>  Mon, 03 Sep 2012 16:50:00 +0200
+
 qt4-qws (4:4.8.1-metno2) precise; urgency=low
 
   * Added missing header files.

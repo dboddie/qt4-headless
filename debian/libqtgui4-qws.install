@@ -1,2 +1,2 @@
-usr/share/metno-bdiana/lib/libQtGui.so.*
-usr/share/metno-bdiana/lib/fonts/*.ttf
+opt/qt4-qws/lib/libQtGui.so.*
+opt/qt4-qws/lib/fonts/*.ttf

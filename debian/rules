@@ -155,7 +155,7 @@ endif
 	            -optimized-qmake \
 	            -pch \
 	            -prefix-install \
-	            -prefix /usr/share/metno-bdiana \
+	            -prefix /opt/qt4-qws \
 	            -release \
 	            -rpath \
 	            -shared \
@@ -281,10 +281,10 @@ endif
 #	                          debian/tmp/usr/include/
 
 	# Fix wrong path in pkgconfig files
-	find $(CURDIR)/debian/tmp/usr/share/metno-bdiana/lib/pkgconfig -type f -name '*.pc' \
+	find $(CURDIR)/debian/tmp/opt/qt4-qws/lib/pkgconfig -type f -name '*.pc' \
 		-exec perl -pi -e "s, -L$(CURDIR)/?\S+,,g" {} \;
 	# Fix wrong path in prl files
-	find $(CURDIR)/debian/tmp/usr/share/metno-bdiana/lib -type f -name '*.prl' \
+	find $(CURDIR)/debian/tmp/opt/qt4-qws/lib -type f -name '*.prl' \
 		-exec sed -i -e "/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/" {} \;
 
 override_dh_install:

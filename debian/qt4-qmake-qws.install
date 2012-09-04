@@ -1,2 +1,2 @@
-usr/share/metno-bdiana/bin/qmake-qt4
-usr/share/metno-bdiana/mkspecs/*
+opt/qt4-qws/bin/qmake-qt4
+opt/qt4-qws/mkspecs/*

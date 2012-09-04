@@ -1,3 +1,9 @@
+qt4-qws (4:4.8.1-metno4) precise; urgency=low
+
+  * Changed the installation path.
+
+ -- David Boddie <david.boddie@met.no>  Tue, 04 Sep 2012 11:59:00 +0200
+
 qt4-qws (4:4.8.1-metno3) precise; urgency=low
 
   * Changed the configuration to make a smaller library.

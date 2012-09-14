@@ -1,2 +1,2 @@
-opt/qt4-qws/bin/qmake-qt4
+opt/qt4-qws/bin/qmake
 opt/qt4-qws/mkspecs/*

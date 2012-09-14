@@ -1,10 +1,11 @@
 #!/usr/bin/make -f
 
 build:
+	dh_quilt_patch
 	./configure -confirm-license \
 	            -depths 16,32 \
 	            -embedded \
-                    -qconfig wms \
+	            -qconfig wms \
 	            -exceptions \
 	            -fast \
 	            -glib \
@@ -49,14 +50,19 @@ build:
 	            -stl \
 	            -svg \
 	            -system-freetype \
-	            -system-libjpeg \
+	            -no-libjpeg \
+	            -no-libmng \
 	            -system-libpng \
-	            -system-libtiff \
+	            -no-libtiff \
 	            -system-zlib \
 	            $(extra_configure_opts)
 
 clean:
-	$(MAKE) clean
+	dh_testdir
+	dh_testroot
+	[ ! -f Makefile ] || $(MAKE) clean
+	dh_quilt_unpatch
+	dh_clean
 
 install: build
 	mkdir $(CURDIR)/debian/tmp
@@ -64,11 +70,24 @@ install: build
 
 binary: binary-arch binary-indep
 
-binary-indep:
-	mkdir $(CURDIR)/debian/tmp/DEBIAN
-	dpkg-gencontrol
-	dpkg --build debian/tmp
+binary-indep: build install
 
 binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+	dh_install
+	dh_installman
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
 
 .PHONY: build clean binary-indep binary-arch binary install configure

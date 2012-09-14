@@ -5,15 +5,9 @@ Maintainer: David Boddie <david.boddie@met.no>
 Build-Depends: debhelper (>= 8.9.9),
                dpkg-dev (>= 1.16.1),
                flex,
-               pkg-kde-tools (>= 0.14.2),
                libfreetype6-dev,
                libglib2.0-dev,
-               libjpeg-dev,
-               libmng-dev,
-               libmysqlclient-dev,
                libpng12-dev,
-               libpq-dev,
-               libtiff4-dev,
                zlib1g-dev
 Standards-Version: 3.9.2
 Homepage: http://www.qt-project.org

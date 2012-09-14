@@ -1,7 +1,7 @@
-opt/qt4-qws/bin/lrelease-qt4
-opt/qt4-qws/bin/moc-qt4
+opt/qt4-qws/bin/lrelease
+opt/qt4-qws/bin/moc
 opt/qt4-qws/bin/rcc
-opt/qt4-qws/bin/uic-qt4
+opt/qt4-qws/bin/uic
 opt/qt4-qws/include/Qt/QtCore
 opt/qt4-qws/include/Qt/QtGui
 opt/qt4-qws/include/Qt/QtNetwork

@@ -1,3 +1,9 @@
+qt4-qws (4:4.8.3-metno0) precise; urgency=low
+
+  * Repackaged a newer version of the library.
+
+ -- David Boddie <david.boddie@met.no>  Tue, 18 Sep 2012 15:54:30 +0200
+
 qt4-qws (4:4.8.2-metno0) precise; urgency=low
 
   * Repackaged a newer version of the library.

@@ -16,24 +16,6 @@
  another model and a view.
 --- qt4-qws-4.8.1.orig/src/corelib/global/qfeatures.h	2012-03-14 15:01:18.000000000 +0100
 +++ qt4-qws-4.8.1/src/corelib/global/qfeatures.h	2012-09-03 15:05:35.549351714 +0200
-@@ -1,8 +1,7 @@
- /****************************************************************************
- **
- ** Copyright (C) 2012 Nokia Corporation and/or its subsidiary(-ies).
--** All rights reserved.
--** Contact: Nokia Corporation (qt-info@nokia.com)
-+** Contact: http://www.qt-project.org/
- **
- ** This file is part of the QtCore module of the Qt Toolkit.
- **
-@@ -35,6 +34,7 @@
- **
- **
- **
-+**
- ** $QT_END_LICENSE$
- **
- ****************************************************************************/
 @@ -778,6 +778,11 @@
  #define QT_NO_DATAWIDGETMAPPER
  #endif

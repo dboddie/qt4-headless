@@ -107,3 +107,9 @@ Description: Qt 4 qmake Makefile generator tool
  many default values used to generate appropriate Makefiles.
  .
  This package contains also these platform specifications.
+
+Package: qt4-qws-dummy-screen-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqtgui4-qws (>= 4:4.8.1-metno4)
+Description: Dummy QWS screen driver plugin
+  A screen driver plugin for a QWS build of Qt that produces no output.

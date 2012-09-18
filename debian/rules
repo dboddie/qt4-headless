@@ -18,6 +18,7 @@ build:
 	            -no-dbus \
 	            -no-declarative \
 	            -no-declarative-debug \
+	            -plugin-gfx-dummy \
 	            -no-gfx-linuxfb \
 	            -no-gfx-multiscreen \
 	            -no-javascript-jit \

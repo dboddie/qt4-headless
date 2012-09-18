@@ -2,3 +2,4 @@
 metno_00_remove_qpicture_checksum.diff
 metno_01_identitymodel_feature_fix.diff
 metno_02_wms_configuration.diff
+metno_03_dummy_screen.diff

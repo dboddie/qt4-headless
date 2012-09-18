@@ -1,0 +1,170 @@
+--- qt4-qws.orig/src/plugins/gfxdrivers/gfxdrivers.pro	2012-09-18 18:00:32.214204634 +0200
++++ qt4-qws/src/plugins/gfxdrivers/gfxdrivers.pro	2012-09-18 18:04:05.913743184 +0200
+@@ -8,3 +8,4 @@
+ contains(gfx-plugins, svgalib)      :SUBDIRS += svgalib
+ contains(gfx-plugins, powervr)      :SUBDIRS += powervr
+ contains(gfx-plugins, eglnullws)    :SUBDIRS += eglnullws
++contains(gfx-plugins, dummy)    :SUBDIRS += dummy
+--- /dev/null	2012-09-17 16:38:48.676059962 +0200
++++ qt4-qws/src/plugins/gfxdrivers/dummy/dummy.pro	2012-09-18 17:50:03.702207681 +0200
+@@ -0,0 +1,8 @@
++TEMPLATE = lib
++CONFIG += plugin
++HEADERS = dummyscreen.h
++SOURCES = dummyscreen.cc
++TARGET = dummyscreen
++
++target.path = $$[QT_INSTALL_PLUGINS]/gfxdrivers
++INSTALLS += target
+--- /dev/null	2012-09-17 16:38:48.676059962 +0200
++++ qt4-qws/src/plugins/gfxdrivers/dummy/dummyscreen.cc	2012-09-18 17:50:03.702207681 +0200
+@@ -0,0 +1,89 @@
++/*
++  Dummy screen plugin for QWS.
++
++  Copyright (C) 2012 met.no
++
++  Contact information:
++  Norwegian Meteorological Institute
++  Box 43 Blindern
++  0313 OSLO
++  NORWAY
++  email: diana@met.no
++
++  This file is part of Diana
++
++  Diana is free software; you can redistribute it and/or modify
++  it under the terms of the GNU General Public License as published by
++  the Free Software Foundation; either version 2 of the License, or
++  (at your option) any later version.
++
++  Diana is distributed in the hope that it will be useful,
++  but WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++  GNU General Public License for more details.
++
++  You should have received a copy of the GNU General Public License
++  along with Diana; if not, write to the Free Software
++  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
++*/
++
++#include "dummyscreen.h"
++
++DummyScreen::DummyScreen(int displayId)
++    : QScreen(displayId)
++{
++}
++
++DummyScreen::~DummyScreen()
++{
++}
++
++bool DummyScreen::connect(const QString &displaySpec)
++{
++    Q_UNUSED(displaySpec)
++
++    QScreen::data = 0;
++    QScreen::lstep = 0;
++    QScreen::w = 11;
++    QScreen::h = 11;
++    QScreen::dw = 11;
++    QScreen::dh = 11;
++    QScreen::d = 32;
++    QScreen::physWidth = 4;
++    QScreen::physHeight = 4;
++
++    return true;
++}
++
++void DummyScreen::disconnect()
++{
++}
++
++bool DummyScreen::initDevice()
++{
++    return true;
++}
++
++void DummyScreen::setMode(int width, int height, int depth)
++{
++}
++
++DummyScreenPlugin::DummyScreenPlugin()
++    : QScreenDriverPlugin()
++{
++}
++
++QStringList DummyScreenPlugin::keys() const
++{
++    return QStringList("dummy");
++}
++
++QScreen *DummyScreenPlugin::create(const QString &key, int displayId)
++{
++    if (key != "dummy")
++        return 0;
++    else
++        return new DummyScreen(displayId);
++}
++
++Q_EXPORT_PLUGIN2(dummyscreenplugin, DummyScreenPlugin)
+--- /dev/null	2012-09-17 16:38:48.676059962 +0200
++++ qt4-qws/src/plugins/gfxdrivers/dummy/dummyscreen.h	2012-09-18 17:50:03.706207681 +0200
+@@ -0,0 +1,57 @@
++/*
++  Dummy screen plugin for QWS.
++
++  Copyright (C) 2012 met.no
++
++  Contact information:
++  Norwegian Meteorological Institute
++  Box 43 Blindern
++  0313 OSLO
++  NORWAY
++  email: diana@met.no
++
++  This file is part of Diana
++
++  Diana is free software; you can redistribute it and/or modify
++  it under the terms of the GNU General Public License as published by
++  the Free Software Foundation; either version 2 of the License, or
++  (at your option) any later version.
++
++  Diana is distributed in the hope that it will be useful,
++  but WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++  GNU General Public License for more details.
++
++  You should have received a copy of the GNU General Public License
++  along with Diana; if not, write to the Free Software
++  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
++*/
++
++#ifndef DUMMYSCREEN_H
++#define DUMMYSCREEN_H
++
++#include <QScreen>
++#include <QScreenDriverPlugin>
++
++class DummyScreen : public QScreen
++{
++public:
++    DummyScreen(int displayId);
++    virtual ~DummyScreen();
++
++    virtual bool connect(const QString &displaySpec);
++    virtual void disconnect();
++    virtual bool initDevice();
++    virtual void setMode(int width, int height, int depth);
++};
++
++class DummyScreenPlugin : public QScreenDriverPlugin
++{
++public:
++    DummyScreenPlugin();
++
++    QStringList keys() const;
++    QScreen *create(const QString &key, int displayId);
++};
++
++#endif // DUMMYSCREEN_H

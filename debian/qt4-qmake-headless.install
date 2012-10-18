@@ -1,0 +1,2 @@
+opt/qt4-headless/bin/qmake
+opt/qt4-headless/mkspecs/*

@@ -4,7 +4,7 @@ build:
 	dh_quilt_patch
 	./configure -confirm-license \
 	            -depths 16,32 \
-	            -embedded \
+	            -qpa dummy \
 	            -qconfig wms \
 	            -exceptions \
 	            -fast \
@@ -18,7 +18,6 @@ build:
 	            -no-dbus \
 	            -no-declarative \
 	            -no-declarative-debug \
-	            -plugin-gfx-dummy \
 	            -no-gfx-linuxfb \
 	            -no-gfx-multiscreen \
 	            -no-javascript-jit \
@@ -44,7 +43,7 @@ build:
 	            -optimized-qmake \
 	            -pch \
 	            -prefix-install \
-	            -prefix /opt/qt4-qws \
+	            -prefix /opt/qt4-headless \
 	            -release \
 	            -rpath \
 	            -shared \

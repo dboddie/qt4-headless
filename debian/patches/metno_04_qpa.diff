@@ -1,0 +1,506 @@
+--- qt4-qws.orig/src/gui/kernel/qapplication_qpa.cpp	2012-10-17 13:01:20.753826227 +0200
++++ qt4-qws/src/gui/kernel/qapplication_qpa.cpp	2012-10-17 13:02:04.321826032 +0200
+@@ -816,10 +816,11 @@
+          mouseWidget = w;
+          p = mouseWidget->mapFromGlobal(globalPoint);
+      }
+-
++#ifndef QT_NO_WHEELEVENT
+      QWheelEvent ev(p, globalPoint, e->delta, buttons, QApplication::keyboardModifiers(),
+                    e->orient);
+      QApplication::sendSpontaneousEvent(mouseWidget, &ev);
++#endif
+ }
+ 
+ 
+--- qt4-qws-4.8.3/src/plugins/inputmethods/imsw-multi/qmultiinputcontext.cpp.old	2012-10-17 13:25:32.284397203 +0200
++++ qt4-qws-4.8.3/src/plugins/inputmethods/imsw-multi/qmultiinputcontext.cpp	2012-10-17 13:25:35.348397200 +0200
+@@ -53,8 +53,8 @@
+ **
+ ****************************************************************************/
+ 
+-#ifndef QT_NO_IM
+ #include "qmultiinputcontext.h"
++#ifndef QT_NO_IM
+ #include <qinputcontextfactory.h>
+ #include <qstringlist.h>
+ #include <qaction.h>
+--- qt4-qws-4.8.3/src/plugins/inputmethods/imsw-multi/qmultiinputcontext.h.old	2012-10-17 13:23:20.396397829 +0200
++++ qt4-qws-4.8.3/src/plugins/inputmethods/imsw-multi/qmultiinputcontext.h	2012-10-17 13:23:25.932397683 +0200
+@@ -56,6 +56,8 @@
+ #ifndef QMULTIINPUTCONTEXT_H
+ #define QMULTIINPUTCONTEXT_H
+ 
++#include <QtCore/qglobal.h>
++
+ #ifndef QT_NO_IM
+ 
+ #include <QtGui/qwidget.h>
+--- qt4-qws-4.8.3/src/plugins/inputmethods/imsw-multi/qmultiinputcontextplugin.cpp.old	2012-10-17 13:26:13.804398393 +0200
++++ qt4-qws-4.8.3/src/plugins/inputmethods/imsw-multi/qmultiinputcontextplugin.cpp	2012-10-17 13:26:21.816395377 +0200
+@@ -53,8 +53,8 @@
+ **
+ ****************************************************************************/
+ 
+-#ifndef QT_NO_IM
+ #include "qmultiinputcontext.h"
++#ifndef QT_NO_IM
+ #include "qmultiinputcontextplugin.h"
+ #include <qinputcontextplugin.h>
+ #include <qstringlist.h>
+--- qt4-qws-4.8.3/src/plugins/inputmethods/imsw-multi/qmultiinputcontextplugin.h.old	2012-10-17 13:27:52.252396509 +0200
++++ qt4-qws-4.8.3/src/plugins/inputmethods/imsw-multi/qmultiinputcontextplugin.h	2012-10-17 13:28:21.280396269 +0200
+@@ -56,9 +56,9 @@
+ #ifndef QMULTIINPUTCONTEXTPLUGIN_H
+ #define QMULTIINPUTCONTEXTPLUGIN_H
+ 
+-#ifndef QT_NO_IM
+-
+ #include "qmultiinputcontext.h"
++
++#ifndef QT_NO_IM
+ #include <QtGui/qinputcontextplugin.h>
+ #include <QtCore/qstringlist.h>
+ 
+--- qt4-qws-4.8.3.orig/src/plugins/platforms/dummy/dummyintegration.cpp	2012-10-17 17:33:19.328591194 +0200
++++ qt4-qws-4.8.3/src/plugins/platforms/dummy/dummyintegration.cpp	2012-10-17 18:54:35.125642228 +0200
+@@ -0,0 +1,91 @@
++/****************************************************************************
++**
++** Copyright (C) 2012 Nokia Corporation and/or its subsidiary(-ies).
++** Contact: http://www.qt-project.org/
++** Copyright (C) 2012 met.no
++**
++** This file is part of the plugins of the Qt Toolkit.
++**
++** $QT_BEGIN_LICENSE:LGPL$
++** GNU Lesser General Public License Usage
++** This file may be used under the terms of the GNU Lesser General Public
++** License version 2.1 as published by the Free Software Foundation and
++** appearing in the file LICENSE.LGPL included in the packaging of this
++** file. Please review the following information to ensure the GNU Lesser
++** General Public License version 2.1 requirements will be met:
++** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
++**
++** In addition, as a special exception, Nokia gives you certain additional
++** rights. These rights are described in the Nokia Qt LGPL Exception
++** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU General
++** Public License version 3.0 as published by the Free Software Foundation
++** and appearing in the file LICENSE.GPL included in the packaging of this
++** file. Please review the following information to ensure the GNU General
++** Public License version 3.0 requirements will be met:
++** http://www.gnu.org/copyleft/gpl.html.
++**
++** Other Usage
++** Alternatively, this file may be used in accordance with the terms and
++** conditions contained in a signed written agreement between you and Nokia.
++**
++**
++**
++**
++**
++**
++** $QT_END_LICENSE$
++**
++****************************************************************************/
++
++#include "dummyintegration.h"
++#include "dummywindowsurface.h"
++#include "qgenericunixfontdatabase.h"
++
++#include <QtGui/private/qpixmap_raster_p.h>
++#include <QtGui/QPlatformWindow>
++
++DummyIntegration::DummyIntegration()
++    : fontDb(new QGenericUnixFontDatabase())
++{
++    DummyScreen *mPrimaryScreen = new DummyScreen();
++
++    mPrimaryScreen->mGeometry = QRect(0, 0, 110, 110);
++    mPrimaryScreen->mDepth = 32;
++    mPrimaryScreen->mFormat = QImage::Format_ARGB32_Premultiplied;
++    mPrimaryScreen->mPhysicalSize = QSize(40, 40);
++
++    mScreens.append(mPrimaryScreen);
++}
++
++bool DummyIntegration::hasCapability(QPlatformIntegration::Capability cap) const
++{
++    switch (cap) {
++    case ThreadedPixmaps: return true;
++    default: return QPlatformIntegration::hasCapability(cap);
++    }
++}
++
++QPixmapData *DummyIntegration::createPixmapData(QPixmapData::PixelType type) const
++{
++    return new QRasterPixmapData(type);
++}
++
++QPlatformWindow *DummyIntegration::createPlatformWindow(QWidget *widget, WId winId) const
++{
++    Q_UNUSED(winId);
++    return new QPlatformWindow(widget);
++}
++
++QWindowSurface *DummyIntegration::createWindowSurface(QWidget *widget, WId winId) const
++{
++    Q_UNUSED(winId);
++    return new DummyWindowSurface(widget);
++}
++
++QPlatformFontDatabase *DummyIntegration::fontDatabase() const
++{
++    return fontDb;
++}
+--- qt4-qws-4.8.3.orig/src/plugins/platforms/dummy/dummyintegration.h	2012-10-17 17:33:20.944593026 +0200
++++ qt4-qws-4.8.3/src/plugins/platforms/dummy/dummyintegration.h	2012-10-17 18:54:32.881642238 +0200
+@@ -0,0 +1,90 @@
++/****************************************************************************
++**
++** Copyright (C) 2012 Nokia Corporation and/or its subsidiary(-ies).
++** Contact: http://www.qt-project.org/
++** Copyright (C) 2012 met.no
++**
++** This file is part of the plugins of the Qt Toolkit.
++**
++** $QT_BEGIN_LICENSE:LGPL$
++** GNU Lesser General Public License Usage
++** This file may be used under the terms of the GNU Lesser General Public
++** License version 2.1 as published by the Free Software Foundation and
++** appearing in the file LICENSE.LGPL included in the packaging of this
++** file. Please review the following information to ensure the GNU Lesser
++** General Public License version 2.1 requirements will be met:
++** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
++**
++** In addition, as a special exception, Nokia gives you certain additional
++** rights. These rights are described in the Nokia Qt LGPL Exception
++** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU General
++** Public License version 3.0 as published by the Free Software Foundation
++** and appearing in the file LICENSE.GPL included in the packaging of this
++** file. Please review the following information to ensure the GNU General
++** Public License version 3.0 requirements will be met:
++** http://www.gnu.org/copyleft/gpl.html.
++**
++** Other Usage
++** Alternatively, this file may be used in accordance with the terms and
++** conditions contained in a signed written agreement between you and Nokia.
++**
++**
++**
++**
++**
++**
++** $QT_END_LICENSE$
++**
++****************************************************************************/
++
++#ifndef QPLATFORMINTEGRATION_DUMMY_H
++#define QPLATFORMINTEGRATION_DUMMY_H
++
++#include <QtGui/QPlatformIntegration>
++#include <QtGui/QPlatformScreen>
++
++QT_BEGIN_NAMESPACE
++
++class DummyScreen : public QPlatformScreen
++{
++public:
++    DummyScreen()
++        : mDepth(32), mFormat(QImage::Format_ARGB32_Premultiplied) {}
++
++    QRect geometry() const { return mGeometry; }
++    int depth() const { return mDepth; }
++    QImage::Format format() const { return mFormat; }
++    QSize physicalSize() const { return mPhysicalSize; }
++
++public:
++    QRect mGeometry;
++    int mDepth;
++    QImage::Format mFormat;
++    QSize mPhysicalSize;
++};
++
++class DummyIntegration : public QPlatformIntegration
++{
++public:
++    DummyIntegration();
++
++    bool hasCapability(QPlatformIntegration::Capability cap) const;
++
++    QPixmapData *createPixmapData(QPixmapData::PixelType type) const;
++    QPlatformWindow *createPlatformWindow(QWidget *widget, WId winId) const;
++    QWindowSurface *createWindowSurface(QWidget *widget, WId winId) const;
++
++    QList<QPlatformScreen *> screens() const { return mScreens; }
++    QPlatformFontDatabase *fontDatabase() const;
++
++private:
++    QList<QPlatformScreen *> mScreens;
++    QPlatformFontDatabase *fontDb;
++};
++
++QT_END_NAMESPACE
++
++#endif
+--- qt4-qws-4.8.3.orig/src/plugins/platforms/dummy/dummy.pro	2012-10-17 17:33:12.844593040 +0200
++++ qt4-qws-4.8.3/src/plugins/platforms/dummy/dummy.pro	2012-10-17 18:18:26.197652745 +0200
+@@ -0,0 +1,15 @@
++TARGET = dummy
++include(../../qpluginbase.pri)
++
++QTDIR_build:DESTDIR = $$QT_BUILD_TREE/plugins/platforms
++
++SOURCES =   main.cpp \
++            dummyintegration.cpp \
++            dummywindowsurface.cpp
++HEADERS =   dummyintegration.h \
++            dummywindowsurface.h
++
++include(../fontdatabases/genericunix/genericunix.pri)
++
++target.path += $$[QT_INSTALL_PLUGINS]/platforms
++INSTALLS += target
+--- qt4-qws-4.8.3.orig/src/plugins/platforms/dummy/dummywindowsurface.cpp	2012-10-17 17:33:34.464592855 +0200
++++ qt4-qws-4.8.3/src/plugins/platforms/dummy/dummywindowsurface.cpp	2012-10-17 18:18:26.201652745 +0200
+@@ -0,0 +1,75 @@
++/****************************************************************************
++**
++** Copyright (C) 2012 Nokia Corporation and/or its subsidiary(-ies).
++** Contact: http://www.qt-project.org/
++** Copyright (C) 2012 met.no
++**
++** This file is part of the plugins of the Qt Toolkit.
++**
++** $QT_BEGIN_LICENSE:LGPL$
++** GNU Lesser General Public License Usage
++** This file may be used under the terms of the GNU Lesser General Public
++** License version 2.1 as published by the Free Software Foundation and
++** appearing in the file LICENSE.LGPL included in the packaging of this
++** file. Please review the following information to ensure the GNU Lesser
++** General Public License version 2.1 requirements will be met:
++** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
++**
++** In addition, as a special exception, Nokia gives you certain additional
++** rights. These rights are described in the Nokia Qt LGPL Exception
++** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU General
++** Public License version 3.0 as published by the Free Software Foundation
++** and appearing in the file LICENSE.GPL included in the packaging of this
++** file. Please review the following information to ensure the GNU General
++** Public License version 3.0 requirements will be met:
++** http://www.gnu.org/copyleft/gpl.html.
++**
++** Other Usage
++** Alternatively, this file may be used in accordance with the terms and
++** conditions contained in a signed written agreement between you and Nokia.
++**
++**
++**
++**
++**
++**
++** $QT_END_LICENSE$
++**
++****************************************************************************/
++
++
++#include "dummywindowsurface.h"
++#include <QtCore/qdebug.h>
++#include <QtGui/private/qapplication_p.h>
++
++QT_BEGIN_NAMESPACE
++
++DummyWindowSurface::DummyWindowSurface(QWidget *window)
++    : QWindowSurface(window)
++{
++}
++
++DummyWindowSurface::~DummyWindowSurface()
++{
++}
++
++QPaintDevice *DummyWindowSurface::paintDevice()
++{
++    return &mImage;
++}
++
++void DummyWindowSurface::flush(QWidget *widget, const QRegion &region, const QPoint &offset)
++{
++    Q_UNUSED(widget);
++    Q_UNUSED(region);
++    Q_UNUSED(offset);
++}
++
++void DummyWindowSurface::resize(const QSize &size)
++{
++}
++
++QT_END_NAMESPACE
+--- qt4-qws-4.8.3.orig/src/plugins/platforms/dummy/dummywindowsurface.h	2012-10-17 17:33:35.680592781 +0200
++++ qt4-qws-4.8.3/src/plugins/platforms/dummy/dummywindowsurface.h	2012-10-17 18:18:26.201652745 +0200
+@@ -0,0 +1,68 @@
++/****************************************************************************
++**
++** Copyright (C) 2012 Nokia Corporation and/or its subsidiary(-ies).
++** Contact: http://www.qt-project.org/
++** Copyright (C) 2012 met.no
++**
++** This file is part of the plugins of the Qt Toolkit.
++**
++** $QT_BEGIN_LICENSE:LGPL$
++** GNU Lesser General Public License Usage
++** This file may be used under the terms of the GNU Lesser General Public
++** License version 2.1 as published by the Free Software Foundation and
++** appearing in the file LICENSE.LGPL included in the packaging of this
++** file. Please review the following information to ensure the GNU Lesser
++** General Public License version 2.1 requirements will be met:
++** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
++**
++** In addition, as a special exception, Nokia gives you certain additional
++** rights. These rights are described in the Nokia Qt LGPL Exception
++** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU General
++** Public License version 3.0 as published by the Free Software Foundation
++** and appearing in the file LICENSE.GPL included in the packaging of this
++** file. Please review the following information to ensure the GNU General
++** Public License version 3.0 requirements will be met:
++** http://www.gnu.org/copyleft/gpl.html.
++**
++** Other Usage
++** Alternatively, this file may be used in accordance with the terms and
++** conditions contained in a signed written agreement between you and Nokia.
++**
++**
++**
++**
++**
++**
++** $QT_END_LICENSE$
++**
++****************************************************************************/
++
++#ifndef QWINDOWSURFACE_DUMMY_H
++#define QWINDOWSURFACE_DUMMY_H
++
++#include <QtGui/private/qwindowsurface_p.h>
++
++#include <QtGui/QPlatformWindow>
++
++QT_BEGIN_NAMESPACE
++
++class DummyWindowSurface : public QWindowSurface
++{
++public:
++    DummyWindowSurface(QWidget *window);
++    ~DummyWindowSurface();
++
++    QPaintDevice *paintDevice();
++    void flush(QWidget *widget, const QRegion &region, const QPoint &offset);
++    void resize(const QSize &size);
++
++private:
++    QImage mImage;
++};
++
++QT_END_NAMESPACE
++
++#endif
+--- qt4-qws-4.8.3.orig/src/plugins/platforms/dummy/main.cpp	2012-10-17 17:33:25.504592999 +0200
++++ qt4-qws-4.8.3/src/plugins/platforms/dummy/main.cpp	2012-10-17 18:18:26.201652745 +0200
+@@ -0,0 +1,74 @@
++/****************************************************************************
++**
++** Copyright (C) 2012 Nokia Corporation and/or its subsidiary(-ies).
++** Contact: http://www.qt-project.org/
++** Copyright (C) 2012 met.no
++**
++** This file is part of the plugins of the Qt Toolkit.
++**
++** $QT_BEGIN_LICENSE:LGPL$
++** GNU Lesser General Public License Usage
++** This file may be used under the terms of the GNU Lesser General Public
++** License version 2.1 as published by the Free Software Foundation and
++** appearing in the file LICENSE.LGPL included in the packaging of this
++** file. Please review the following information to ensure the GNU Lesser
++** General Public License version 2.1 requirements will be met:
++** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
++**
++** In addition, as a special exception, Nokia gives you certain additional
++** rights. These rights are described in the Nokia Qt LGPL Exception
++** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU General
++** Public License version 3.0 as published by the Free Software Foundation
++** and appearing in the file LICENSE.GPL included in the packaging of this
++** file. Please review the following information to ensure the GNU General
++** Public License version 3.0 requirements will be met:
++** http://www.gnu.org/copyleft/gpl.html.
++**
++** Other Usage
++** Alternatively, this file may be used in accordance with the terms and
++** conditions contained in a signed written agreement between you and Nokia.
++**
++**
++**
++**
++**
++**
++** $QT_END_LICENSE$
++**
++****************************************************************************/
++
++
++#include <QtGui/QPlatformIntegrationPlugin>
++#include "dummyintegration.h"
++
++QT_BEGIN_NAMESPACE
++
++class DummyIntegrationPlugin : public QPlatformIntegrationPlugin
++{
++public:
++    QStringList keys() const;
++    QPlatformIntegration *create(const QString&, const QStringList&);
++};
++
++QStringList DummyIntegrationPlugin::keys() const
++{
++    QStringList list;
++    list << "Dummy";
++    return list;
++}
++
++QPlatformIntegration *DummyIntegrationPlugin::create(const QString& system, const QStringList& paramList)
++{
++    Q_UNUSED(paramList);
++    if (system.toLower() == "dummy")
++        return new DummyIntegration;
++
++    return 0;
++}
++
++Q_EXPORT_PLUGIN2(dummy, DummyIntegrationPlugin)
++
++QT_END_NAMESPACE
+--- qt4-qws-4.8.3.orig/src/plugins/platforms/platforms.pro	2012-10-17 17:30:51.488593790 +0200
++++ qt4-qws-4.8.3/src/plugins/platforms/platforms.pro	2012-10-17 18:18:26.205652746 +0200
+@@ -1,6 +1,7 @@
+ TEMPLATE = subdirs
+ 
+-SUBDIRS += minimal
++#SUBDIRS += minimal
++SUBDIRS += dummy
+ 
+ contains(QT_CONFIG, wayland) {
+     SUBDIRS += wayland

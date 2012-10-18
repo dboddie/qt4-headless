@@ -1,4 +1,4 @@
-Source: qt4-qws
+Source: qt4-headless
 Section: libs
 Priority: optional
 Maintainer: David Boddie <david.boddie@met.no>
@@ -12,7 +12,7 @@ Build-Depends: debhelper (>= 8.9.9),
 Standards-Version: 3.9.2
 Homepage: http://www.qt-project.org
 
-Package: libqtcore4-qws
+Package: libqtcore4-headless
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Qt 4 core module
@@ -21,7 +21,7 @@ Description: Qt 4 core module
  .
  The QtCore module contains core non-GUI functionality.
 
-Package: libqtgui4-qws
+Package: libqtgui4-headless
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, fontconfig
 Description: Qt 4 GUI module
@@ -30,7 +30,7 @@ Description: Qt 4 GUI module
  .
  The QtGui module extends QtCore with GUI functionality.
 
-Package: libqt4-network-qws
+Package: libqt4-network-headless
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Qt 4 network module
@@ -40,7 +40,7 @@ Description: Qt 4 network module
  The QtNetwork module offers classes that allow you to write TCP/IP clients and
  servers. It provides classes to make network programming easier and portable.
 
-Package: libqt4-svg-qws
+Package: libqt4-svg-headless
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Qt 4 SVG module
@@ -52,7 +52,7 @@ Description: Qt 4 SVG module
  Scalable Vector Graphics (SVG) is a language for describing two-dimensional
  graphics and graphical applications in XML.
 
-Package: libqt4-xml-qws
+Package: libqt4-xml-headless
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Qt 4 XML module
@@ -62,14 +62,14 @@ Description: Qt 4 XML module
  The QtXml module provides a stream reader and writer for XML documents,
  and C++ implementations of SAX and DOM.
 
-Package: libqt4-qws-dev
+Package: libqt4-headless-dev
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, ${misc:Depends}, libqtcore4-qws (= ${binary:Version}),
- libqt4-network-qws (= ${binary:Version}),
- libqtgui4-qws (= ${binary:Version}), libqt4-svg-qws (= ${binary:Version}),
- libqt4-xml-qws (= ${binary:Version}),
- qt4-qmake-qws (= ${binary:Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqtcore4-headless (= ${binary:Version}),
+ libqt4-network-headless (= ${binary:Version}),
+ libqtgui4-headless (= ${binary:Version}), libqt4-svg-headless (= ${binary:Version}),
+ libqt4-xml-headless (= ${binary:Version}),
+ qt4-qmake-headless (= ${binary:Version})
 Description: Qt 4 development files
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -77,19 +77,19 @@ Description: Qt 4 development files
  This package contains the header development files and development programs
  used for building Qt 4 applications.
 
-Package: libqt4-qws-dbg
+Package: libqt4-headless-dbg
 Priority: extra
 Architecture: any
 Section: debug
 Depends: ${shlibs:Depends}, ${misc:Depends},
- libqtcore4-qws (= ${binary:Version})
+ libqtcore4-headless (= ${binary:Version})
 Description: Qt 4 library debugging symbols
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
  .
  This package contains the debugging symbols for the Qt 4 libraries.
 
-Package: qt4-qmake-qws
+Package: qt4-qmake-headless
 Architecture: any
 Section: devel
 Depends: ${shlibs:Depends}, ${misc:Depends}
@@ -107,9 +107,3 @@ Description: Qt 4 qmake Makefile generator tool
  many default values used to generate appropriate Makefiles.
  .
  This package contains also these platform specifications.
-
-Package: qt4-qws-dummy-screen-plugin
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libqtgui4-qws (>= 4:4.8.1-metno4)
-Description: Dummy QWS screen driver plugin
-  A screen driver plugin for a QWS build of Qt that produces no output.

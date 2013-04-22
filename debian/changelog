@@ -1,3 +1,15 @@
+qt4-headless (4:4.8.3-metno2) stable; urgency=low
+
+  * Reduced requirements for building packages.
+
+ -- David Boddie <david.boddie@met.no>  Thu, 11 Apr 2013 17:55:45 +0200
+
+qt4-headless (4:4.8.3-metno1) precise; urgency=low
+
+  * Removed unnecessary packaging files.
+
+ -- David Boddie <david.boddie@met.no>  Thu, 01 Nov 2012 14:59:17 +0100
+
 qt4-headless (4:4.8.3-metno0) precise; urgency=low
 
   * Created a new package for headless Qt that uses QPA instead of QWS.

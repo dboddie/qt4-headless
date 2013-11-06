@@ -1,3 +1,9 @@
+qt4-headless (4:4.8.3-metno4) precise; urgency=low
+
+  * Removed more unnecessary features from the build.
+
+ -- David Boddie <david.boddie@met.no>  Wed, 06 Nov 2013 12:52:59 +0100
+
 qt4-headless (4:4.8.3-metno3) precise; urgency=low
 
   * Enabled DOM support in the QtXml module.

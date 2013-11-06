@@ -1,6 +1,6 @@
 --- /dev/null	2012-07-02 14:47:27.441809000 +0200
 +++ qt4-qws-4.8.1/src/corelib/global/qconfig-wms.h	2012-09-03 15:05:53.045399358 +0200
-@@ -0,0 +1,270 @@
+@@ -0,0 +1,267 @@
 +
 +/* Dialogs */
 +#ifndef QT_NO_MESSAGEBOX
@@ -11,9 +11,6 @@
 +#endif
 +
 +/* File I/O */
-+#ifndef QT_NO_DOM
-+#  define QT_NO_DOM
-+#endif
 +#ifndef QT_NO_FILESYSTEMWATCHER
 +#  define QT_NO_FILESYSTEMWATCHER
 +#endif

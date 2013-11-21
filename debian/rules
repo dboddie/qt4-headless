@@ -37,7 +37,7 @@ build:
 	            -no-sql-ibase \
 	            -no-sql-sqlite2 \
 	            -no-webkit \
-	            -no-xmlpatterns \
+	            -xmlpatterns \
 	            -opensource \
 	            -openssl \
 	            -optimized-qmake \

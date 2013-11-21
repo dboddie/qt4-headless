@@ -1,3 +1,10 @@
+qt4-headless (4:4.8.3-metno5) precise; urgency=low
+
+  * Added potentially missing QtXml files.
+  * Added the QtXmlPatterns module to the build.
+
+ -- David Boddie <david.boddie@met.no>  Thu, 21 Nov 2013 14:45:25 +0100
+
 qt4-headless (4:4.8.3-metno4) precise; urgency=low
 
   * Removed more unnecessary features from the build.

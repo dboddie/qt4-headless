@@ -63,13 +63,22 @@ Description: Qt 4 XML module
  The QtXml module provides a stream reader and writer for XML documents,
  and C++ implementations of SAX and DOM.
 
+Package: libqt4-xmlpatterns-headless
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Qt 4 XML module
+ Qt is a cross-platform C++ application framework. Qt's primary feature
+ is its rich set of widgets that provide standard GUI functionality.
+ .
+ QtXmlPatterns is a XQuery and XPath engine for XML and custom data models.
+
 Package: libqt4-headless-dev
 Architecture: any
 Section: libdevel
 Depends: ${shlibs:Depends}, ${misc:Depends}, libqtcore4-headless (= ${binary:Version}),
  libqt4-network-headless (= ${binary:Version}),
  libqtgui4-headless (= ${binary:Version}), libqt4-svg-headless (= ${binary:Version}),
- libqt4-xml-headless (= ${binary:Version}),
+ libqt4-xml-headless (= ${binary:Version}), libqt4-xmlpatterns-headless (= ${binary:Version}),
  qt4-qmake-headless (= ${binary:Version})
 Description: Qt 4 development files
  Qt is a cross-platform C++ application framework. Qt's primary feature

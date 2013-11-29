@@ -1,6 +1,6 @@
 --- /dev/null	2012-07-02 14:47:27.441809000 +0200
 +++ qt4-qws-4.8.1/src/corelib/global/qconfig-wms.h	2012-09-03 15:05:53.045399358 +0200
-@@ -0,0 +1,455 @@
+@@ -0,0 +1,450 @@
 +
 +/* Dialogs */
 +#ifndef QT_NO_COLORDIALOG
@@ -232,11 +232,6 @@
 +#endif
 +#ifndef QT_NO_QWS_PROXYSCREEN
 +#  define QT_NO_QWS_PROXYSCREEN
-+#endif
-+
-+/* SVG */
-+#ifndef QT_NO_SVGRENDERER
-+#  define QT_NO_SVGRENDERER
 +#endif
 +
 +/* Styles */

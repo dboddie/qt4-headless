@@ -1,3 +1,9 @@
+qt4-headless (4:4.8.3-metno6) precise; urgency=low
+
+  * Enabled SVG rendering to support drawing of weather symbols.
+
+ -- David Boddie <david.boddie@met.no>  Fri, 29 Nov 2013 15:58:45 +0100
+
 qt4-headless (4:4.8.3-metno5) precise; urgency=low
 
   * Added potentially missing QtXml files.

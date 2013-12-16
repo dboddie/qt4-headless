@@ -1,3 +1,2 @@
-opt/qt4-headless/lib/libQtGui.so.*
-opt/qt4-headless/lib/fonts/*.ttf
-opt/qt4-headless/plugins/platforms/*.so
+usr/lib/qt4-headless/libQtGui.so.*
+usr/lib/qt4-headless/plugins/platforms/*.so

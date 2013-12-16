@@ -1,6 +1,6 @@
-libQtCore 4 libqtcore4-headless
-libQtGui 4 libqtgui4-headless
-libQtNetwork 4 libqt4-network-headless
-libQtSvg 4 libqt4-svg-headless
-libQtXml 4 libqt4-xml-headless
-libQtXmlPatterns 4 libqt4-xmlpatterns-headless
+libQtCore-headless 4 libqtcore4-headless
+libQtGui-headless 4 libqtgui4-headless
+libQtNetwork-headless 4 libqt4-network-headless
+libQtSvg-headless 4 libqt4-svg-headless
+libQtXml-headless 4 libqt4-xml-headless
+libQtXmlPatterns-headless 4 libqt4-xmlpatterns-headless

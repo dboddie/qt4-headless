@@ -1,0 +1,50 @@
+--- qt4-headless/src/corelib/corelib.pro.old	2013-12-13 13:11:31.708804866 +0100
++++ qt4-headless/src/corelib/corelib.pro	2013-12-13 13:12:57.780561644 +0100
+@@ -1,4 +1,4 @@
+-TARGET	   = QtCore
++TARGET	   = QtCore-headless
+ QPRO_PWD   = $$PWD
+ QT         =
+ DEFINES   += QT_BUILD_CORE_LIB QT_NO_USING_NAMESPACE
+--- qt4-headless/src/gui/gui.pro.old	2013-12-13 13:11:47.396760497 +0100
++++ qt4-headless/src/gui/gui.pro	2013-12-13 13:13:06.412537266 +0100
+@@ -1,4 +1,4 @@
+-TARGET     = QtGui
++TARGET     = QtGui-headless
+ QPRO_PWD   = $$PWD
+ QT = core
+ DEFINES   += QT_BUILD_GUI_LIB QT_NO_USING_NAMESPACE
+--- qt4-headless/src/network/network.pro.old	2013-12-13 13:11:55.304738146 +0100
++++ qt4-headless/src/network/network.pro	2013-12-13 13:13:12.688519554 +0100
+@@ -1,6 +1,6 @@
+ # Qt network module
+ 
+-TARGET   = QtNetwork
++TARGET   = QtNetwork-headless
+ QPRO_PWD = $$PWD
+ DEFINES += QT_BUILD_NETWORK_LIB QT_NO_USING_NAMESPACE
+ #DEFINES += QLOCALSERVER_DEBUG QLOCALSOCKET_DEBUG
+--- qt4-headless/src/svg/svg.pro.old	2013-12-13 13:12:07.300704238 +0100
++++ qt4-headless/src/svg/svg.pro	2013-12-13 13:13:18.252503849 +0100
+@@ -1,4 +1,4 @@
+-TARGET     = QtSvg
++TARGET     = QtSvg-headless
+ QPRO_PWD   = $$PWD
+ QT         = core gui
+ DEFINES   += QT_BUILD_SVG_LIB
+--- qt4-headless/src/xml/xml.pro.old	2013-12-13 13:12:18.628672195 +0100
++++ qt4-headless/src/xml/xml.pro	2013-12-13 13:13:24.252486915 +0100
+@@ -1,4 +1,4 @@
+-TARGET     = QtXml
++TARGET     = QtXml-headless
+ QPRO_PWD   = $$PWD
+ QT         = core
+ DEFINES   += QT_BUILD_XML_LIB QT_NO_USING_NAMESPACE
+--- qt4-headless/src/xmlpatterns/xmlpatterns.pro.old	2013-12-13 13:12:28.048645612 +0100
++++ qt4-headless/src/xmlpatterns/xmlpatterns.pro	2013-12-13 13:13:33.952460222 +0100
+@@ -1,4 +1,4 @@
+-TARGET = QtXmlPatterns
++TARGET = QtXmlPatterns-headless
+ QPRO_PWD = $$PWD
+ QT = core \
+     network

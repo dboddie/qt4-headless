@@ -1,8 +1,10 @@
 #!/usr/bin/make -f
 
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
 build:
 	dh_quilt_patch
-	./configure -confirm-license \
+	CXX="ccache g++" ./configure -confirm-license \
 	            -depths 16,32 \
 	            -qpa dummy \
 	            -qconfig wms \
@@ -41,9 +43,18 @@ build:
 	            -opensource \
 	            -openssl \
 	            -optimized-qmake \
-	            -pch \
+	            -no-pch \
 	            -prefix-install \
-	            -prefix /opt/qt4-headless \
+	            -prefix /usr \
+	            -bindir "/usr/bin" \
+	            -libdir "/usr/lib/qt4-headless" \
+	            -docdir "/usr/share/qt4-headless/doc" \
+	            -headerdir "/usr/include/qt4-headless" \
+	            -datadir "/usr/share/qt4-headless" \
+	            -plugindir "/usr/lib/qt4-headless/plugins" \
+	            -importdir "/usr/lib/qt4-headless/imports" \
+	            -translationdir "/usr/share/qt4-headless/translations" \
+	            -sysconfdir "/etc/xdg" \
 	            -release \
 	            -rpath \
 	            -shared \
@@ -85,7 +96,7 @@ binary-arch: build install
 	dh_compress
 	dh_fixperms
 	dh_installdeb
-	LD_LIBRARY_PATH=$(CURDIR)/debian/tmp/opt/qt4-headless/lib dh_shlibdeps
+	LD_LIBRARY_PATH=$(CURDIR)/debian/tmp/usr/lib dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb

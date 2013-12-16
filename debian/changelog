@@ -1,3 +1,10 @@
+qt4-headless (4:4.8.3-metno7) precise; urgency=low
+
+  * Changed the installation directory.
+  * Modified the library names to avoid conflicts with qt4-x11.
+
+ -- David Boddie <david.boddie@met.no>  Fri, 13 Dec 2013 12:44:58 +0100
+
 qt4-headless (4:4.8.3-metno6) precise; urgency=low
 
   * Enabled SVG rendering to support drawing of weather symbols.

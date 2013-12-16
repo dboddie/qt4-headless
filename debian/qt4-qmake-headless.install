@@ -1,2 +1,2 @@
-opt/qt4-headless/bin/qmake
-opt/qt4-headless/mkspecs/*
+usr/bin/qmake-qt4-headless
+usr/share/qt4-headless/mkspecs/*

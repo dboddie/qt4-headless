@@ -4,7 +4,7 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 build:
 	dh_quilt_patch
-	CXX="ccache g++" ./configure -confirm-license \
+	./configure -confirm-license \
 	            -depths 16,32 \
 	            -qpa dummy \
 	            -qconfig wms \

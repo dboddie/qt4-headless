@@ -96,7 +96,7 @@ binary-arch: build install
 	dh_compress
 	dh_fixperms
 	dh_installdeb
-	LD_LIBRARY_PATH=$(CURDIR)/debian/tmp/usr/lib dh_shlibdeps
+	LD_LIBRARY_PATH=$(CURDIR)/debian/tmp/usr/lib/qt4-headless dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb

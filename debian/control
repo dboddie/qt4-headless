@@ -8,6 +8,7 @@ Build-Depends: debhelper (>= 8.0.0),
                libfreetype6-dev,
                libglib2.0-dev,
                libpng12-dev,
+               libssl-dev,
                quilt,
                zlib1g-dev
 Standards-Version: 3.9.2

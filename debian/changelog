@@ -1,8 +1,8 @@
-qt4-headless (4:4.8.6-metno1) unstable; urgency=low
+qt4-headless (4:4.8.6-1) unstable; urgency=low
 
-  * Rebuilt with Qt 4.8.6 sources.
+  * use Qt 4.8.6
 
- -- David Boddie <david.boddie@met.no>  Fri, 30 Oct 2015 18:47:59 +0100
+ -- Alexander Bürger <alexander.buerger@met.no>  Wed, 24 Feb 2016 15:50:00 +0100
 
 qt4-headless (4:4.8.3-metno8) precise; urgency=low
 
